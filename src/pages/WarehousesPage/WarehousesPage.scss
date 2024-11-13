@@ -1,0 +1,59 @@
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
+
+.option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2.5rem;
+  
+
+  &__search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #d3d3d3;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  &__search-input {
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+    border-radius: 20px 0 0 20px;
+  }
+
+  &__search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+
+    &--img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  &__add-button {
+    background-color: #366fd6;
+    width: 100%;
+    color: #ffffff;
+    @include h3-font-mob;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #2e5cb2;
+    }
+  }
+}

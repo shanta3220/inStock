@@ -62,27 +62,27 @@
 
 
 //h2 - mobile
-@mixin h2-font-tab {
+@mixin h2-font-mob {
     font-size: $m-h2-subheader;
     line-height: $m-h2-line-height;
     font-weight: 600;
   }
 
   //h3 -mobile - H3 - Labels, Links & Buttons and P2 - Body Medium
-@mixin h3-font-tab {
+@mixin h3-font-mob {
     font-size: $m-h3-and-p2;
-    line-height: $m-h3-and-p2;
+    line-height: $m-h3-and-p2-line-height;
     font-weight: 600;
   }
 
   //h4 - mobile H4 - table header & P3 - Body Small
-@mixin h4-font-tab {
+@mixin h4-font-mob {
     font-size: $m-h4-and-p3;
     line-height: $m-h4-and-p3-line-height;
   }
 
     //p1 - mobile
-  @mixin p1-font-tab {
+  @mixin p1-font-mob {
     font-size: $m-p1-body-large;
     line-height: $m-p1-line-height;
     font-weight: 400;
