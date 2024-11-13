@@ -1,0 +1,15 @@
+
+@use "./mixins" as *;
+@use "./variables" as *;
+@use "./typography" as *;
+
+h1,
+h2,
+h3,
+h4,
+p {
+    margin: 0;
+}
+li {
+    list-style-type: none;
+}

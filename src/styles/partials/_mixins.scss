@@ -1,0 +1,89 @@
+@use "./variables" as *;
+
+@mixin tablet {
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+@mixin box-sizing {
+  box-sizing: border-box;
+}
+//----FONTS----
+
+//h1 - both desktop and tablet - page header
+@mixin h1-font-tab {
+  font-size: $h1-page-header;
+  line-height: $h1-line-height;
+  font-weight: 600;
+}
+
+//h2 - desktop/tablet 
+@mixin h2-font-tab {
+    font-size: $h2-subheader;
+    line-height: $h2-line-height;
+    font-weight: 600;
+  }
+
+  //h3 - desktop and tablet - H3 - Labels, Links & Buttons and P2 - Body Medium
+@mixin h3-font-tab {
+    font-size: $h3-and-p2;
+    line-height: $h3-and-p2;
+    font-weight: 600;
+  }
+
+  //h4 - desktop and tablet H4 - table header & P3 - Body Small
+@mixin h4-font-tab {
+    font-size: $h4-and-p3;
+    line-height: $h4-and-p3-line-height;
+  }
+
+    //p1 - desktop and tablet
+  @mixin p1-font-tab {
+    font-size: $p1-body-large;
+    line-height: $p1-line-height;
+    font-weight: 400;
+  }
+
+//--------------//
+
+
+//h1 - mobile -page header
+@mixin h1-font-mob {
+  font-size: $m-h1-page-header;
+  line-height: $m-h1-line-height;
+  font-weight: 600;
+}
+
+
+//h2 - mobile
+@mixin h2-font-tab {
+    font-size: $m-h2-subheader;
+    line-height: $m-h2-line-height;
+    font-weight: 600;
+  }
+
+  //h3 -mobile - H3 - Labels, Links & Buttons and P2 - Body Medium
+@mixin h3-font-tab {
+    font-size: $m-h3-and-p2;
+    line-height: $m-h3-and-p2;
+    font-weight: 600;
+  }
+
+  //h4 - mobile H4 - table header & P3 - Body Small
+@mixin h4-font-tab {
+    font-size: $m-h4-and-p3;
+    line-height: $m-h4-and-p3-line-height;
+  }
+
+    //p1 - mobile
+  @mixin p1-font-tab {
+    font-size: $m-p1-body-large;
+    line-height: $m-p1-line-height;
+    font-weight: 400;
+  }
