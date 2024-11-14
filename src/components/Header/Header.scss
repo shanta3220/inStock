@@ -1,0 +1,22 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+
+.header {
+  display: flex;
+  flex-direction: column;
+  background-color: $background-color-1;
+  padding: 1.5rem 0 0 0;
+  gap: 1.5rem;
+  height: 30vh;
+
+  @include tablet {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  &__logo {
+    display: flex;
+    justify-content: center;
+  }
+}
