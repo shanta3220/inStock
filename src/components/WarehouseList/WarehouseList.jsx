@@ -2,8 +2,8 @@ import React from "react";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import editIcon from "../../assets/Icons/edit-24px.svg";
 import arrowRight from "../../assets/Icons/chevron_right-24px.svg";
-import sortArrow from "../../assets/Icons/sort-24px.svg";
 import "./WarehouseList.scss";
+import HeaderCell from "../HeaderCell/HeaderCell";
 
 const warehouseData = [
   {
@@ -34,49 +34,27 @@ function WarehouseList() {
     <div className="warehouse-table">
       {/* Header row for tablet view */}
       <div className="warehouse-table__header">
-        <h4 className="warehouse-table__header-cell">
-          WAREHOUSE{" "}
-          <button className="warehouse-table__sort-button">
-            <img
-              src={sortArrow}
-              alt="Sort arrow"
-              className="warehouse-table__sort-arrow"
-            />
-          </button>
-        </h4>
-        <h4 className="warehouse-table__header-cell">
-          ADDRESS{" "}
-          <button className="warehouse-table__sort-button">
-            <img
-              src={sortArrow}
-              alt="Sort arrow"
-              className="warehouse-table__sort-arrow"
-            />
-          </button>
-        </h4>
-        <h4 className="warehouse-table__header-cell">
-          CONTACT NAME{" "}
-          <button className="warehouse-table__sort-button">
-            <img
-              src={sortArrow}
-              alt="Sort arrow"
-              className="warehouse-table__sort-arrow"
-            />
-          </button>
-        </h4>
-        <h4 className="warehouse-table__header-cell">
-          CONTACT INFORMATION
-          <button className="warehouse-table__sort-button">
-            <img
-              src={sortArrow}
-              alt="Sort arrow"
-              className="warehouse-table__sort-arrow"
-            />
-          </button>
-        </h4>
-        <h4 className="warehouse-table__header-cell warehouse-table__header-cell--actions">
-          Actions
-        </h4>
+        <HeaderCell
+          label="WAREHOUSE"
+          sortable
+          onSort={() => handleSort("warehouse_name")}
+        />
+        <HeaderCell
+          label="ADDRESS"
+          sortable
+          onSort={() => handleSort("address")}
+        />
+        <HeaderCell
+          label="CONTACT NAME"
+          sortable
+          onSort={() => handleSort("contact_name")}
+        />
+        <HeaderCell
+          label="CONTACT INFORMATION"
+          sortable
+          onSort={() => handleSort("contact_information")}
+        />
+        <HeaderCell label="Actions" align="right" />
       </div>
 
       {/* Data rows */}
@@ -86,7 +64,9 @@ function WarehouseList() {
             <h4 className="warehouse-table__title">WAREHOUSE</h4>
             <a href="#" className="warehouse-table__link">
               {" "}
-              <span className="warehouse-table__link--name">{warehouse.warehouse_name}</span>
+              <span className="warehouse-table__link--name">
+                {warehouse.warehouse_name}
+              </span>
               <img
                 src={arrowRight}
                 alt="arrow"
@@ -98,16 +78,14 @@ function WarehouseList() {
             <h4 className="warehouse-table__title">ADDRESS</h4>
             <div className="warehouse-table__content" id="address">
               <div className="warehouse-table__address">
-              <p>
-                {warehouse.address},&nbsp;
-              </p>
-              <p>{warehouse.city},&nbsp;</p>
+                <p>{warehouse.address},&nbsp;</p>
+                <p>{warehouse.city},&nbsp;</p>
               </div>
               <p>{warehouse.country}</p>
             </div>
           </div>
           <div className="warehouse-table__cell-pair">
-            <h4 className="warehouse-table__title" > CONTACT NAME</h4>
+            <h4 className="warehouse-table__title"> CONTACT NAME</h4>
             <div className="warehouse-table__content">
               {warehouse.contact_name}
             </div>

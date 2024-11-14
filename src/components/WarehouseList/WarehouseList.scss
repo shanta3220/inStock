@@ -1,19 +1,11 @@
 @use "../../styles/partials/variables.scss" as *;
 @use "../../styles/partials/mixins.scss" as *;
 
-#address{
-  @include desktop{
-    display: flex;
-    flex-direction: row;
-  }
-}
-
 .warehouse-table {
   display: flex;
   flex-direction: column;
- 
 
-  @include tablet{
+  @include tablet {
     display: grid;
     gap: 1px;
   }
@@ -21,20 +13,17 @@
   &__header {
     display: none;
 
-    @include tablet{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    font-weight: bold;
-    background-color: $background-color-2;
-    padding-left: 32px;
-    padding-right: 32px;    
+    @include tablet {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      background-color: $background-color-2;
+      width: 100%;
+      padding: 0.5rem 2rem;
     }
 
-    @include desktop{
+    @include desktop {
       grid-template-columns: 1.5fr 1.5fr 1.5fr 1fr 1fr;
-      padding-left: 40px;
-    padding-right: 40px;    
-
+      padding: 0.5rem 2.5rem;
     }
   }
 
@@ -42,80 +31,64 @@
     display: flex;
     flex-direction: row;
     border-top: 1px solid $secondary-color-2;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 8px;
-    padding-bottom: 20px;
+    padding: 2.5rem 2rem 1.25rem;
     flex-wrap: wrap;
 
-    @include tablet{
+    @include tablet {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    font-weight: bold;
-    border-bottom: 1px solid $secondary-color-2;
-    border-top: 0;
-   padding-top: 0;
-   margin-bottom: 0;
-   padding-bottom: 20px;
-   padding-left: 32px;
-    padding-right: 32px;
-   
+      font-weight: bold;
+      border-bottom: 1px solid $secondary-color-2;
+      border-top: 0;
+      padding: 0 2rem 1.25rem;
+      margin-bottom: 0;
     }
 
-    &:hover{
+    &:hover {
       background-color: rgba(46, 102, 229, 0.07);
-;
     }
 
-    @include desktop{
+    @include desktop {
       grid-template-columns: 1.5fr 1.5fr 1.5fr 1fr 1fr;
-      
     }
-
   }
 
   &__cell-pair {
     display: flex;
     flex-direction: column;
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
     width: 50%;
     padding-top: 1.25rem;
 
-  
-    @include tablet{
+    @include tablet {
       display: flex;
-   // text-align: left;
-    width: 100%;
-    margin-bottom: 0;
-    align-self: center;
-  //  width: min-content;
+      width: 100%;
+      margin-bottom: 0;
+      align-self: center;
     }
 
-    @include desktop{
+    @include desktop {
       width: max-content;
       text-align: center;
     }
-
-    
   }
 
   &__header-cell {
     display: none;
 
-    @include tablet{
+    @include tablet {
       display: flex;
-    padding: 10px 0;
+      padding: 0.625rem 0;
       @include h4-font-tab;
       align-items: center;
       color: $secondary-color-1;
       width: max-content;
-
     }
 
-    &--actions{
+    &--actions {
       display: none;
 
-      @include tablet{
+      @include tablet {
         display: grid;
         text-align: right;
         width: 100%;
@@ -133,122 +106,119 @@
 
   &__sort-arrow {
     width: 1rem;
-    margin-left: 5px;
+    margin-left: 0.3125rem;
   }
 
   &__title {
     font-weight: 600;
-    margin-right: 8px;
-    padding-bottom: 4px;
+    margin-right: 0.5rem;
+    padding-bottom: 0.25rem;
     @include h4-font-mob;
     color: $secondary-color-1;
-    @include tablet{
+
+    @include tablet {
       display: none;
-      }
+    }
   }
 
-  
-&__link{
-  @include h3-font-mob;
-  font-weight: 400;
-  color: $primary-color-2;
-  text-decoration: none;
-  display: flex;
-  align-items: center; /* Centers items vertically */
-  gap: 4px; /* Adjust the spacing between the text and the arrow as needed */
-  text-decoration: none;
+  &__link {
+    @include h3-font-mob;
+    font-weight: 400;
+    color: $primary-color-2;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    text-decoration: none;
 
-  &--name {
-    text-decoration: none; /* No underline by default */
+    &--name {
+      text-decoration: none;
+    }
+
+    &:hover &--name {
+      text-decoration: underline;
+    }
   }
 
-  &:hover &--name {
-    text-decoration: underline;
+  .warehouse-table__arrow {
+    width: 1.25rem;
+    height: 1.25rem;
   }
-}
-
-
-.warehouse-table__arrow {
-  width: 1.25rem;
-  height: 1.25rem;
-}
 
   &__content {
     @include h3-font-mob;
     font-weight: 400;
 
-    @include tablet{
+    @include tablet {
       text-align: left;
     }
   }
 
-  &__address{
+  &__address {
     display: flex;
-    
-    @include tablet{
+
+    @include tablet {
       flex-direction: column;
     }
-    @include desktop{
+
+    @include desktop {
       flex-direction: row;
     }
   }
 
-
-
-  /* Icons for action buttons */
   &__actions {
     display: flex;
     justify-content: space-between;
-    margin-top: 8px;
-    margin-right: 10px;
+    margin-top: 0.5rem;
+    margin-right: 0.625rem;
     width: 100%;
 
-    @include tablet{
-    justify-content: flex-end;
-    align-items: center;
-    gap: 40px;
-    margin-top: 0;
-    margin-right: 0;
+    @include tablet {
+      justify-content: flex-end;
+      align-items: center;
+      gap: 2.5rem;
+      margin-top: 0;
+      margin-right: 0;
     }
   }
+
   &__icon {
-    width: 24px;
-    height: 24px;
+    width: 1.5rem;
+    height: 1.5rem;
     cursor: pointer;
   }
-  /* Mobile-specific order logic */
+
   .warehouse-table__row {
-    .warehouse-table__cell-pair:nth-child(2) { /* Address */
-      order: 2; /* Address comes second */
+    .warehouse-table__cell-pair:nth-child(2) {
+      order: 2;
     }
 
-    .warehouse-table__cell-pair:nth-child(5) { /* Contact Name */
-      order: 1; /* Contact Name comes first */
+    .warehouse-table__cell-pair:nth-child(5) {
+      order: 1;
     }
 
-    .warehouse-table__cell-pair:nth-child(4) { /* Contact Information */
-      order: 3; /* Contact Information stays third */
+    .warehouse-table__cell-pair:nth-child(4) {
+      order: 3;
     }
+
     .warehouse-table__actions {
-      order: 4; /* Action buttons come last in mobile */
+      order: 4;
     }
   }
 
-  // Tablet (desktop) view: restore default order
   @include tablet {
     .warehouse-table__row {
-      .warehouse-table__cell-pair:nth-child(2) { /* Address */
-        order: 2; /* Address stays second */
+      .warehouse-table__cell-pair:nth-child(2) {
+        order: 2;
       }
 
-      .warehouse-table__cell-pair:nth-child(3) { /* Contact Name */
-        order: 3; /* Contact Name stays third */
+      .warehouse-table__cell-pair:nth-child(3) {
+        order: 3;
       }
 
-      .warehouse-table__cell-pair:nth-child(4) { /* Contact Information */
-        order: 4; /* Contact Information stays fourth */
+      .warehouse-table__cell-pair:nth-child(4) {
+        order: 4;
       }
     }
   }
 }
-
