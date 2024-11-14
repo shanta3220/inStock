@@ -6,9 +6,17 @@
   flex-direction: column;
   align-items: center;
   margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.25rem;
   padding-left: 40px;
     padding-right: 40px;
+
+    @include tablet{
+      flex-direction: row;
+      margin-top: 0;
+      padding: 0;
+      margin-bottom: 0;
+      gap: .625rem;
+    }
   
 
   &__search-bar {
@@ -19,16 +27,28 @@
     padding: 0.5rem 1rem;
     margin-bottom: 1rem;
     width: 100%;
-    height: 38px;
+    height: 2.25rem;
+
+    @include tablet{
+      height: 2.375rem;
+      margin-bottom: 0;
+    }
     
   }
   &__search-input {
     border: none;
     outline: none;
-    font-size: 1rem;
-    padding: 0.5rem;
     width: 100%;
     border-radius: 20px 0 0 20px;
+    @include h3-font-mob;
+    font-weight: 400;
+    
+
+    @include tablet{
+      @include h3-font-tab;
+      font-weight: 400;
+    }
+
   }
 
   &__search-button {
@@ -56,5 +76,10 @@
     border-radius: 25px;
     cursor: pointer;
     height: 36px;
+
+    @include tablet{
+      height: 2.375rem;
+      @include h3-font-tab;
+    }
   }
 }

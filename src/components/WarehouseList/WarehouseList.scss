@@ -1,6 +1,13 @@
 @use "../../styles/partials/variables.scss" as *;
 @use "../../styles/partials/mixins.scss" as *;
 
+#address{
+  @include desktop{
+    display: flex;
+    flex-direction: row;
+  }
+}
+
 .warehouse-table {
   display: flex;
   flex-direction: column;
@@ -16,12 +23,18 @@
 
     @include tablet{
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 4 data columns + 1 for actions */
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     font-weight: bold;
-    text-align: left;
-    padding: 10px;
-    background-color: #f3f3f3;
-    border-bottom: 2px solid #333;
+    background-color: $background-color-2;
+    padding-left: 32px;
+    padding-right: 32px;    
+    }
+
+    @include desktop{
+      grid-template-columns: 1.5fr 1.5fr 1.5fr 1fr 1fr;
+      padding-left: 40px;
+    padding-right: 40px;    
+
     }
   }
 
@@ -31,14 +44,34 @@
     border-top: 1px solid $secondary-color-2;
     padding-left: 40px;
     padding-right: 40px;
-    padding-top: 20px;
-    margin-bottom: 20px;
+    padding-top: 8px;
+    padding-bottom: 20px;
     flex-wrap: wrap;
 
     @include tablet{
       display: grid;
-    grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    font-weight: bold;
+    border-bottom: 1px solid $secondary-color-2;
+    border-top: 0;
+   padding-top: 0;
+   margin-bottom: 0;
+   padding-bottom: 20px;
+   padding-left: 32px;
+    padding-right: 32px;
+   
     }
+
+    &:hover{
+      background-color: rgba(46, 102, 229, 0.07);
+;
+    }
+
+    @include desktop{
+      grid-template-columns: 1.5fr 1.5fr 1.5fr 1fr 1fr;
+      
+    }
+
   }
 
   &__cell-pair {
@@ -46,29 +79,37 @@
     flex-direction: column;
     margin-bottom: 8px;
     width: 50%;
-    .warehouse-table__cell-pair:nth-child(2) { /* Address */
-      order: 2; /* Address comes second */
-    }
-  
-    .warehouse-table__cell-pair:nth-child(3) { /* Contact Name */
-      order: 1; /* Contact Name comes first */
-    }
+    padding-top: 1.25rem;
+
   
     @include tablet{
-      display: block;
-    padding: 10px;
-    text-align: left;
+      display: flex;
+   // text-align: left;
     width: 100%;
+    margin-bottom: 0;
+    align-self: center;
+  //  width: min-content;
     }
+
+    @include desktop{
+      width: max-content;
+      text-align: center;
+    }
+
+    
   }
 
   &__header-cell {
     display: none;
 
     @include tablet{
-      display: grid;
-    padding: 10px;
-    border: 1px solid #ddd;
+      display: flex;
+    padding: 10px 0;
+      @include h4-font-tab;
+      align-items: center;
+      color: $secondary-color-1;
+      width: max-content;
+
     }
 
     &--actions{
@@ -76,22 +117,37 @@
 
       @include tablet{
         display: grid;
-        text-align: center;
+        text-align: right;
+        width: 100%;
       }
     }
   }
 
+  &__sort-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__sort-arrow {
+    width: 1rem;
+    margin-left: 5px;
+  }
 
   &__title {
     font-weight: 600;
     margin-right: 8px;
-    width: 50%;
+    padding-bottom: 4px;
     @include h4-font-mob;
     color: $secondary-color-1;
     @include tablet{
       display: none;
       }
   }
+
+  
 &__link{
   @include h3-font-mob;
   font-weight: 400;
@@ -102,7 +158,16 @@
   gap: 4px; /* Adjust the spacing between the text and the arrow as needed */
   text-decoration: none;
 
+  &--name {
+    text-decoration: none; /* No underline by default */
+  }
+
+  &:hover &--name {
+    text-decoration: underline;
+  }
 }
+
+
 .warehouse-table__arrow {
   width: 1.25rem;
   height: 1.25rem;
@@ -117,19 +182,33 @@
     }
   }
 
+  &__address{
+    display: flex;
+    
+    @include tablet{
+      flex-direction: column;
+    }
+    @include desktop{
+      flex-direction: row;
+    }
+  }
+
+
+
   /* Icons for action buttons */
   &__actions {
     display: flex;
     justify-content: space-between;
     margin-top: 8px;
-    margin-right: 20px;
+    margin-right: 10px;
     width: 100%;
 
     @include tablet{
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    gap: 20px;
+    gap: 40px;
     margin-top: 0;
+    margin-right: 0;
     }
   }
   &__icon {
