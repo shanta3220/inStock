@@ -3,12 +3,6 @@
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/variables" as *;
 
-// to be added to global
-// check the desktop breakpoint
-a {
-  text-decoration: none;
-}
-
 .header {
   display: flex;
 

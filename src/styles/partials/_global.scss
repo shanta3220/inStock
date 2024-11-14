@@ -1,4 +1,3 @@
-
 @use "./mixins" as *;
 @use "./variables" as *;
 @use "./typography" as *;
@@ -8,8 +7,12 @@ h2,
 h3,
 h4,
 p {
-    margin: 0;
+  margin: 0;
 }
 li {
-    list-style-type: none;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
 }
