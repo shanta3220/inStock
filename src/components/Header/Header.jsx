@@ -18,7 +18,7 @@ function Header() {
           Warehouse
         </NavLink>
         <NavLink className="header__nav--item" to={`/inventory`}>
-          Ineventory
+          Inventory
         </NavLink>
       </div>
     </header>
