@@ -6,6 +6,9 @@
   flex-direction: column;
   align-items: center;
   margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
+  padding-left: 40px;
+    padding-right: 40px;
   
 
   &__search-bar {
@@ -16,6 +19,8 @@
     padding: 0.5rem 1rem;
     margin-bottom: 1rem;
     width: 100%;
+    height: 38px;
+    
   }
   &__search-input {
     border: none;
@@ -42,18 +47,14 @@
   }
 
   &__add-button {
-    background-color: #366fd6;
+    background-color: $primary-color-2;
     width: 100%;
     color: #ffffff;
     @include h3-font-mob;
-    padding: 0.75rem 2rem;
+    font-family: "Titillium";
     border: none;
     border-radius: 25px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: #2e5cb2;
-    }
+    height: 36px;
   }
 }

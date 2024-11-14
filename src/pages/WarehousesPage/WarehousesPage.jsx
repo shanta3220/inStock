@@ -15,7 +15,8 @@ function WarehousesPage() {
             <img className="option__search-button--img" src={searchIcon} alt="Search Icon" />
           </button>
         </div>
-        <button className="option__add-button">+ Add New Warehouse</button>
+        <button className="option__add-button">
+          + Add New Warehouse</button>
       </div>
       <WarehouseList/>
       </Card>
