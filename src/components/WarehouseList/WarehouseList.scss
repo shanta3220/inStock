@@ -4,7 +4,7 @@
 .warehouse-table {
   display: flex;
   flex-direction: column;
-  // padding: 10px;
+ 
 
   @include tablet{
     display: grid;
@@ -28,10 +28,11 @@
   &__row {
     display: flex;
     flex-direction: row;
-    border-bottom: 1px solid #ddd;
+    border-top: 1px solid $secondary-color-2;
     padding-left: 40px;
     padding-right: 40px;
-    margin-bottom: 10px;
+    padding-top: 20px;
+    margin-bottom: 20px;
     flex-wrap: wrap;
 
     @include tablet{
@@ -45,7 +46,14 @@
     flex-direction: column;
     margin-bottom: 8px;
     width: 50%;
-
+    .warehouse-table__cell-pair:nth-child(2) { /* Address */
+      order: 2; /* Address comes second */
+    }
+  
+    .warehouse-table__cell-pair:nth-child(3) { /* Contact Name */
+      order: 1; /* Contact Name comes first */
+    }
+  
     @include tablet{
       display: block;
     padding: 10px;
@@ -75,15 +83,31 @@
 
 
   &__title {
-    font-weight: bold;
+    font-weight: 600;
     margin-right: 8px;
     width: 50%;
+    @include h4-font-mob;
+    color: $secondary-color-1;
     @include tablet{
       display: none;
       }
   }
+&__link{
+  @include h3-font-mob;
+  font-weight: 400;
+  color: $primary-color-2;
+  text-decoration: none;
+  display: flex;
+  align-items: center; /* Centers items vertically */
+  gap: 8px; /* Adjust the spacing between the text and the arrow as needed */
+  text-decoration: none;
+
+}
 
   &__content {
+    @include h3-font-mob;
+    font-weight: 400;
+
     @include tablet{
       text-align: left;
     }
@@ -108,6 +132,40 @@
     width: 24px;
     height: 24px;
     cursor: pointer;
+  }
+  /* Mobile-specific order logic */
+  .warehouse-table__row {
+    .warehouse-table__cell-pair:nth-child(2) { /* Address */
+      order: 2; /* Address comes second */
+    }
+
+    .warehouse-table__cell-pair:nth-child(5) { /* Contact Name */
+      order: 1; /* Contact Name comes first */
+    }
+
+    .warehouse-table__cell-pair:nth-child(4) { /* Contact Information */
+      order: 3; /* Contact Information stays third */
+    }
+    .warehouse-table__actions {
+      order: 4; /* Action buttons come last in mobile */
+    }
+  }
+
+  // Tablet (desktop) view: restore default order
+  @include tablet {
+    .warehouse-table__row {
+      .warehouse-table__cell-pair:nth-child(2) { /* Address */
+        order: 2; /* Address stays second */
+      }
+
+      .warehouse-table__cell-pair:nth-child(3) { /* Contact Name */
+        order: 3; /* Contact Name stays third */
+      }
+
+      .warehouse-table__cell-pair:nth-child(4) { /* Contact Information */
+        order: 4; /* Contact Information stays fourth */
+      }
+    }
   }
 }
 

@@ -1,6 +1,7 @@
 import React from "react";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import editIcon from '../../assets/Icons/edit-24px.svg';
+import arrowRight from '../../assets/Icons/chevron_right-24px.svg'
 import "./WarehouseList.scss";
 
 const warehouseData = [
@@ -32,34 +33,34 @@ function WarehouseList() {
     <div className="warehouse-table">
       {/* Header row for tablet view */}
       <div className="warehouse-table__header">
-        <div className="warehouse-table__header-cell">Name of Warehouse</div>
-        <div className="warehouse-table__header-cell">Address</div>
-        <div className="warehouse-table__header-cell">Contact Name</div>
-        <div className="warehouse-table__header-cell">Contact Address</div>
-        <div className="warehouse-table__header-cell warehouse-table__header-cell--actions">Actions</div>
+        <h4 className="warehouse-table__header-cell">WAREHOUSE</h4>
+        <h4 className="warehouse-table__header-cell">ADDRESS</h4>
+        <h4 className="warehouse-table__header-cell">CONTACT NAME</h4>
+        <h4 className="warehouse-table__header-cell">CONTACT ADDRESS</h4>
+        <h4 className="warehouse-table__header-cell warehouse-table__header-cell--actions">Actions</h4>
       </div>
       
       {/* Data rows */}
       {warehouseData.map((warehouse, index) => (
         <div className="warehouse-table__row" key={index}>
           <div className="warehouse-table__cell-pair ">
-            <div className="warehouse-table__title">Name of Warehouse</div>
-            <div className="warehouse-table__content">{warehouse.warehouse_name}</div>
+            <h4 className="warehouse-table__title">WAREHOUSE</h4>
+            <a href="#" className="warehouse-table__link"> <span>{warehouse.warehouse_name}</span>
+            <img src={arrowRight} alt="arrow" className="warehouse-table__arrow" /></a>
           </div>
           <div className="warehouse-table__cell-pair">
-            <div className="warehouse-table__title">Address</div>
+            <h4 className="warehouse-table__title">ADDRESS</h4>
             <div className="warehouse-table__content">
-              <p>{warehouse.address},</p>
-              <p>{warehouse.city},</p>
+              <p>{warehouse.address}, {warehouse.city},</p>
               <p>{warehouse.country}</p>
               </div>
           </div>
           <div className="warehouse-table__cell-pair">
-            <div className="warehouse-table__title">Contact Name</div>
+            <h4 className="warehouse-table__title">CONTACT NAME</h4>
             <div className="warehouse-table__content">{warehouse.contact_name}</div>
           </div>
           <div className="warehouse-table__cell-pair">
-            <div className="warehouse-table__title">Contact Information</div>
+            <h4 className="warehouse-table__title">CONTACT INFORMATION</h4>
             <div className="warehouse-table__content">
              <p> {warehouse.contact_phone}</p>
              <p> {warehouse.contact_email}</p>
