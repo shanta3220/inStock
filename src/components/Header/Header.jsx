@@ -11,7 +11,6 @@ function Header() {
         <Link to="/">
           <img className="header__img" src={logo} alt="instock logo" />
         </Link>
-        <h1>INSTOCK</h1>
       </div>
 
       <div className="header__nav--items">
