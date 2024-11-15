@@ -1,0 +1,74 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.delete-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border: 0.0625rem solid $primary-color-3;
+  border-radius: 0.25rem;
+  background-color: $primary-color-3;
+  overflow: auto;
+  outline: none;
+  padding: 1rem 1rem 1.5rem;
+  font-family: "Titillium Web";
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+  &__close-icon {
+    align-self: flex-end;
+  }
+  &__header {
+    margin: 1.25rem 1rem 1rem 1rem;
+    @include h1-font-mob;
+    font-weight: 500;
+  }
+  &__text {
+    margin: 0 1rem 1rem 1rem;
+    @include p1-font-mob;
+  }
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+  }
+  &__button {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 1.25rem;
+    padding: 0.6rem;
+    width: 100%;
+    &--cancel {
+      background-color: $primary-color-3;
+      border: 0.0625rem solid $secondary-color-2;
+    }
+    &--confirm {
+      background-color: $supporting-color-2;
+      color: $primary-color-3;
+      border: 0.0625rem solid $supporting-color-2;
+    }
+  }
+}

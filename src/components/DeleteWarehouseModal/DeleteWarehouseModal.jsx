@@ -28,7 +28,7 @@ function DeleteWarehouseModal({
       .catch((err) => {
         console.log(err);
       });
-    closeModal;
+    closeModal();
   };
   return (
     <Modal
@@ -45,7 +45,7 @@ function DeleteWarehouseModal({
           className="delete-modal__close-icon"
           onClick={closeModal}
         />
-        <h1 className="delete-modal__heading">{`Delete ${warehouseName} warehouse?`}</h1>
+        <h1 className="delete-modal__header">{`Delete ${warehouseName} warehouse?`}</h1>
         <p className="delete-modal__text">{`Please confirm that you’d like to delete the ${warehouseName} from the list of warehouses. You won’t be able to undo this action.`}</p>
       </div>
       <div className="delete-modal__actions">
