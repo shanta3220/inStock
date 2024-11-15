@@ -1,0 +1,234 @@
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
+
+.warehouse-table {
+  display: flex;
+  flex-direction: column;
+
+  @include tablet {
+    display: grid;
+    gap: 1px;
+  }
+
+  &__header {
+    display: none;
+
+    @include tablet {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 0.5fr;
+      background-color: $background-color-2;
+      width: 100%;
+      padding: 0.5rem 2rem;
+    }
+
+    @include desktop {
+      grid-template-columns: 1fr 1.5fr 1fr 1fr 0.5fr;
+      padding: 0.5rem 2rem;
+    }
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid $secondary-color-2;
+    padding: 1.25rem 2rem 1.25rem;
+    flex-wrap: wrap;
+
+    @include tablet {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 0.5fr;
+      font-weight: bold;
+      border-bottom: 1px solid $secondary-color-2;
+      border-top: 0;
+      padding: 0 2rem 1.25rem;
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      background-color: rgba(46, 102, 229, 0.07);
+    }
+
+    @include desktop {
+      grid-template-columns: 1fr 1.5fr 1fr 1fr 0.5fr;
+    }
+  }
+
+  &__cell-pair {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+    width: 50%;
+    padding-top: 1.25rem;
+
+    @include tablet {
+      display: flex;
+      width: 100%;
+      margin-bottom: 0;
+      align-self: center;
+    }
+
+    @include desktop {
+      width: max-content;
+      text-align: center;
+    }
+  }
+
+  &__header-cell {
+    display: none;
+
+    @include tablet {
+      display: flex;
+      padding: 0.625rem 0;
+      @include h4-font-tab;
+      align-items: center;
+      color: $secondary-color-1;
+      width: max-content;
+    }
+
+    &--actions {
+      display: none;
+
+      @include tablet {
+        display: grid;
+        text-align: right;
+        width: 100%;
+      }
+    }
+  }
+
+  &__sort-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__sort-arrow {
+    width: 1rem;
+    margin-left: 0.3125rem;
+  }
+
+  &__title {
+    font-weight: 600;
+    margin-right: 0.5rem;
+    padding-bottom: 0.25rem;
+    @include h4-font-mob;
+    color: $secondary-color-1;
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &__link {
+    @include h3-font-mob;
+    font-weight: 400;
+    color: $primary-color-2;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    text-decoration: none;
+
+    &--name {
+      text-decoration: none;
+    }
+
+    &:hover &--name {
+      text-decoration: underline;
+    }
+  }
+
+  &__arrow {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  &__content {
+    @include h3-font-mob;
+    font-weight: 400;
+
+    @include tablet {
+      text-align: left;
+    }
+  }
+
+  &__address {
+    display: flex;
+
+    @include tablet {
+      flex-direction: column;
+    }
+
+    @include desktop {
+      flex-direction: row;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    margin-right: 1.625rem;
+    width: 100%;
+
+    @include tablet {
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0;
+      margin-right: 0;
+    }
+
+    @include desktop{
+      gap: 40px;
+    }
+  }
+
+  &__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+  }
+
+  .warehouse-table__row {
+    .warehouse-table__cell-pair:nth-child(2) {
+      order: 2;
+    }
+
+    .warehouse-table__cell-pair:nth-child(5) {
+      order: 1;
+    }
+
+    .warehouse-table__cell-pair:nth-child(4) {
+      order: 3;
+    }
+
+    .warehouse-table__actions {
+      order: 4;
+    }
+  }
+
+  @include tablet {
+    .warehouse-table__row {
+      .warehouse-table__cell-pair:nth-child(2) {
+        order: 2;
+      }
+
+      .warehouse-table__cell-pair:nth-child(3) {
+        order: 3;
+      }
+
+      .warehouse-table__cell-pair:nth-child(4) {
+        order: 4;
+      }
+    }
+  }
+}
+#address{
+  @include desktop{
+    display: flex;
+    flex-direction: row;
+  }
+}
