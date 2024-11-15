@@ -14,7 +14,7 @@ function Header() {
       </div>
 
       <div className="header__nav--items">
-        <NavLink className="header__nav--item" to={`/`}>
+        <NavLink className={`header__nav--item ${window.location.pathname.startsWith("/warehouses") ? "active" : ""}`} to={`/`}>
           Warehouse
         </NavLink>
         <NavLink className="header__nav--item" to={`/inventory`}>
