@@ -5,31 +5,8 @@ import arrowRight from "../../assets/Icons/chevron_right-24px.svg";
 import "./WarehouseList.scss";
 import HeaderCell from "../HeaderCell/HeaderCell";
 
-const warehouseData = [
-  {
-    id: 1,
-    warehouse_name: "Manhattan",
-    address: "503 Broadway",
-    city: "New York",
-    country: "USA",
-    contact_name: "Parmin Aujla",
-    contact_position: "Warehouse Manager",
-    contact_phone: "+1 (646) 123-1234",
-    contact_email: "paujla@instock.com",
-  },
-  {
-    id: 2,
-    warehouse_name: "Washington",
-    address: "33 Pearl Street SW",
-    city: "Washington",
-    country: "USA",
-    contact_name: "Greame Lyon",
-    contact_position: "Warehouse Manager",
-    contact_phone: "+1 (646) 123-1234",
-    contact_email: "glyon@instock.com",
-  },
-];
-function WarehouseList() {
+
+function WarehouseList({warehouses}) {
   return (
     <div className="warehouse-table">
       {/* Header row for tablet view */}
@@ -58,56 +35,59 @@ function WarehouseList() {
       </div>
 
       {/* Data rows */}
-      {warehouseData.map((warehouse, index) => (
-        <div className="warehouse-table__row" key={index}>
-          <div className="warehouse-table__cell-pair ">
-            <h4 className="warehouse-table__title">WAREHOUSE</h4>
-            <a href="#" className="warehouse-table__link">
-              {" "}
-              <span className="warehouse-table__link--name">
-                {warehouse.warehouse_name}
-              </span>
-              <img
-                src={arrowRight}
-                alt="arrow"
-                className="warehouse-table__arrow"
-              />
-            </a>
-          </div>
-          <div className="warehouse-table__cell-pair">
-            <h4 className="warehouse-table__title">ADDRESS</h4>
-            <div className="warehouse-table__content" id="address">
-              <div className="warehouse-table__address">
-                <p>{warehouse.address},&nbsp;</p>
-                <p>{warehouse.city},&nbsp;</p>
+      {warehouses.length > 0 ? (
+        warehouses.map((warehouse, index) => (
+          <div className="warehouse-table__row" key={index}>
+            <div className="warehouse-table__cell-pair">
+              <h4 className="warehouse-table__title">WAREHOUSE</h4>
+              <a href="#" className="warehouse-table__link">
+                <span className="warehouse-table__link--name">
+                  {warehouse.warehouse_name}
+                </span>
+                <img
+                  src={arrowRight}
+                  alt="arrow"
+                  className="warehouse-table__arrow"
+                />
+              </a>
+            </div>
+            <div className="warehouse-table__cell-pair">
+              <h4 className="warehouse-table__title">ADDRESS</h4>
+              <div className="warehouse-table__content" id="address">
+                <div className="warehouse-table__address">
+                  <p>{warehouse.address},&nbsp;</p>
+                  <p>{warehouse.city},&nbsp;</p>
+                </div>
+                <p>{warehouse.country}</p>
               </div>
-              <p>{warehouse.country}</p>
+            </div>
+            <div className="warehouse-table__cell-pair">
+              <h4 className="warehouse-table__title">CONTACT NAME</h4>
+              <div className="warehouse-table__content">
+                {warehouse.contact_name}
+              </div>
+            </div>
+            <div className="warehouse-table__cell-pair">
+              <h4 className="warehouse-table__title">CONTACT INFORMATION</h4>
+              <div className="warehouse-table__content">
+                <p>{warehouse.contact_phone}</p>
+                <p>{warehouse.contact_email}</p>
+              </div>
+            </div>
+            {/* Action buttons */}
+            <div className="warehouse-table__actions">
+              <img
+                src={deleteIcon}
+                alt="Delete"
+                className="warehouse-table__icon"
+              />
+              <img src={editIcon} alt="Edit" className="warehouse-table__icon" />
             </div>
           </div>
-          <div className="warehouse-table__cell-pair">
-            <h4 className="warehouse-table__title"> CONTACT NAME</h4>
-            <div className="warehouse-table__content">
-              {warehouse.contact_name}
-            </div>
-          </div>
-          <div className="warehouse-table__cell-pair">
-            <h4 className="warehouse-table__title">CONTACT INFORMATION</h4>
-            <div className="warehouse-table__content">
-              <p> {warehouse.contact_phone}</p>
-              <p> {warehouse.contact_email}</p>
-            </div>
-          </div>
-          {/* Action buttons */}
-          <div className="warehouse-table__actions">
-            <img
-              src={deleteIcon}
-              alt="Delete"
-              className="warehouse-table__icon"
-            />
-            <img src={editIcon} alt="Edit" className="warehouse-table__icon" />
-          </div>
-        </div>
-      ))}
+        ))
+      ) : (
+        <div>No warehouses available</div>
+      )}
     </div>
   );
 }
