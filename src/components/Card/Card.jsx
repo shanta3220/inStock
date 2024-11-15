@@ -15,7 +15,7 @@ function Card({
   return (
     <div className="card">
       <div className="card__header">
-        <div className="card__back-image-name-pair">
+        <div className="card__title-bar">
           {returnPath && (
             <img
               className="card__back_image"

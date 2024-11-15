@@ -30,7 +30,7 @@ function WarehouseDetailsPage() {
 
   return (
     <>
-      <WarehouseDetails warehouseInfo={warehouseInfo} />
+      <WarehouseDetails warehouse={warehouseInfo} />
     </>
   );
 }
