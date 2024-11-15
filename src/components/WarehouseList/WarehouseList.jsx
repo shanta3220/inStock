@@ -42,7 +42,7 @@ function WarehouseList({warehouses}) {
             <div className="warehouse-table__cell-pair">
               <h4 className="warehouse-table__title">WAREHOUSE</h4>
               <Link
-              to={`/${warehouse.id}`}  
+              to={`/warehouses/${warehouse.id}`}  
               className="warehouse-table__link"
             >
               <span className="warehouse-table__link--name">

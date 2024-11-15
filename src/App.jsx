@@ -1,13 +1,10 @@
 import "./App.scss";
-import {
-  Route,
-  Routes,
-  BrowserRouter,
-} from "react-router-dom";
+import { Route, Routes, BrowserRouter} from "react-router-dom";
 import WarehousesPage from "./pages/WarehousesPage/WarehousesPage";
 import InventoryPage from "./pages/InventoryPage/InventoryPage";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import WarehouseDetailsPage from "./pages/WarehouseDetailsPage/WarehouseDetailsPage";
 
 function App() {
   return (
@@ -16,7 +13,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<WarehousesPage />} />
-          <Route path="/:id" element={<WarehousesPage/>}/>
+          <Route path="/warehouses/:id" element={<WarehouseDetailsPage/>}/>
           <Route path="/inventory" element={<InventoryPage />} />
         </Routes>
         <Footer />
