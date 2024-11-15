@@ -1,0 +1,77 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+
+.header {
+  display: flex;
+
+  &-wrapper {
+    flex-direction: column;
+    background-color: $background-color-1;
+    padding: 1.5rem 0 0 0;
+    height: 30vh;
+
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 2.25rem 2.25rem 0 2.25rem;
+    }
+    @include desktop {
+      padding: 2.25rem 9rem 0 9rem;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+  }
+  &__img {
+    width: 10rem;
+    display: flex;
+    justify-content: center;
+    @include tablet {
+      width: 7rem;
+      margin: 0 auto;
+      padding-top: 0.25rem;
+    }
+  }
+  &__nav {
+    &--items {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem;
+      @include tablet {
+        margin: 0 0 0 auto;
+        padding: 0;
+      }
+    }
+    &--item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 2.75rem;
+      width: 50%;
+      background-color: $background-color-1;
+      border: 0.0625rem solid $background-color-1;
+      border-radius: 5rem;
+      font-size: $m-h2-subheader;
+      color: $secondary-color-2;
+      @include tablet {
+        width: 4.5rem;
+        font-size: 0.875rem;
+      }
+    }
+  }
+}
+
+.active {
+  background-color: $primary-color-1;
+  border: 0.0625rem solid $primary-color-1;
+  color: $primary-color-3;
+  @include tablet {
+    width: 7.5rem;
+  }
+}
