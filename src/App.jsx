@@ -16,6 +16,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<WarehousesPage />} />
+          <Route path="/:id" element={<WarehousesPage/>}/>
           <Route path="/inventory" element={<InventoryPage />} />
         </Routes>
         <Footer />
