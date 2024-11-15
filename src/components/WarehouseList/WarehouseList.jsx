@@ -4,6 +4,7 @@ import editIcon from "../../assets/Icons/edit-24px.svg";
 import arrowRight from "../../assets/Icons/chevron_right-24px.svg";
 import "./WarehouseList.scss";
 import HeaderCell from "../HeaderCell/HeaderCell";
+import { Link } from "react-router-dom";
 
 
 function WarehouseList({warehouses}) {
@@ -40,16 +41,19 @@ function WarehouseList({warehouses}) {
           <div className="warehouse-table__row" key={index}>
             <div className="warehouse-table__cell-pair">
               <h4 className="warehouse-table__title">WAREHOUSE</h4>
-              <a href="#" className="warehouse-table__link">
-                <span className="warehouse-table__link--name">
-                  {warehouse.warehouse_name}
-                </span>
-                <img
-                  src={arrowRight}
-                  alt="arrow"
-                  className="warehouse-table__arrow"
-                />
-              </a>
+              <Link
+              to={`/${warehouse.id}`}  
+              className="warehouse-table__link"
+            >
+              <span className="warehouse-table__link--name">
+                {warehouse.warehouse_name}
+              </span>
+              <img
+                src={arrowRight}
+                alt="arrow"
+                className="warehouse-table__arrow"
+              />
+            </Link>
             </div>
             <div className="warehouse-table__cell-pair">
               <h4 className="warehouse-table__title">ADDRESS</h4>

@@ -13,9 +13,9 @@ function WarehousesPage() {
     const API_URL = import.meta.env.VITE_API_URL;
 
     axios
-      .get(`${API_URL}/api/warehouses`)  // Concatenate with the route
+      .get(`${API_URL}/api/warehouses`)  
       .then((response) => {
-        setWarehouses(response.data); // Store the fetched data in state
+        setWarehouses(response.data); 
       })
       .catch((error) => {
         console.error("Error fetching warehouses:", error);

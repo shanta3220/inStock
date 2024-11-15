@@ -4,7 +4,7 @@
 .header-cell {
     display: flex;
     align-items: center;
-    padding: 10px 0;
+    padding: 0.625rem 0;
     color: $secondary-color-1;
     width: 100%;
 
@@ -13,7 +13,7 @@
         width: max-content;
     }
     &--right {
-        justify-content: flex-end; /* Align content to the right */
+        justify-content: flex-end;
       }
   
     &__sort-button {
@@ -22,7 +22,7 @@
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      margin-left: 5px;
+      margin-left: .3125rem;
     }
   
     &__sort-arrow {

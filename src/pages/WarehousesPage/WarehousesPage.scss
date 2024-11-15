@@ -5,50 +5,47 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2.5rem;
-  margin-bottom: 1.25rem;
-  padding-left: 40px;
-    padding-right: 40px;
+  margin-top: 2.5rem;      
+  margin-bottom: 1.25rem; 
+  padding-left: 2.5rem;    
+  padding-right: 2.5rem;  
 
-    @include tablet{
-      flex-direction: row;
-      margin-top: 0;
-      padding: 0;
-      margin-bottom: 0;
-      gap: .625rem;
-    }
-  
+  @include tablet {
+    flex-direction: row;
+    margin-top: 0;
+    padding: 0;
+    margin-bottom: 0;
+    gap: 0.625rem;         
+  }
 
   &__search-bar {
     display: flex;
     align-items: center;
-    border: 1px solid #d3d3d3;
-    border-radius: 20px;
-    padding: 0.5rem 1rem;
-    margin-bottom: 1rem;
+    border: 0.0625rem solid $secondary-color-2; 
+    border-radius: 1.25rem;          
+    padding: 0.5rem 1rem;            
+    margin-bottom: 1rem;           
     width: 100%;
-    height: 2.25rem;
+    height: 2.25rem;                
 
-    @include tablet{
-      height: 2.375rem;
+    @include tablet {
+      height: 2.375rem;              
       margin-bottom: 0;
     }
-    
   }
+
   &__search-input {
     border: none;
     outline: none;
     width: 100%;
-    border-radius: 20px 0 0 20px;
+    border-radius: 1.25rem 0 0 1.25rem;  
     @include h3-font-mob;
     font-weight: 400;
-    
 
-    @include tablet{
+    @include tablet {
       @include h3-font-tab;
       font-weight: 400;
     }
-
   }
 
   &__search-button {
@@ -58,11 +55,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
 
     &--img {
-      width: 1.5rem;
-      height: 1.5rem;
+      width: 1.5rem;     
+      height: 1.5rem;    
     }
   }
 
@@ -73,12 +69,12 @@
     @include h3-font-mob;
     font-family: "Titillium";
     border: none;
-    border-radius: 25px;
+    border-radius: 1.5625rem;   
     cursor: pointer;
-    height: 36px;
+    height: 2.25rem;            
 
-    @include tablet{
-      height: 2.375rem;
+    @include tablet {
+      height: 2.375rem;         
       @include h3-font-tab;
     }
   }
