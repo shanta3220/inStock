@@ -15,7 +15,6 @@ function WarehouseList({ warehouses, setWarehouses }) {
   const [selectedWarehouse, setSelectedWarehouse] = useState(null);
 
   const openModal = (warehouse) => {
-    // console.log("Opening modal for warehouse:", warehouse);
     setSelectedWarehouse(warehouse);
     setModalIsOpen(true);
   };

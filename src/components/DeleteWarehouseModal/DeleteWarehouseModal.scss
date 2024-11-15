@@ -30,6 +30,10 @@
   outline: none;
   padding: 1rem 1rem 1.5rem;
   font-family: "Titillium Web";
+  @include tablet {
+    width: 42rem;
+    height: 16.375rem;
+  }
 
   &__content {
     display: flex;
@@ -41,11 +45,18 @@
   &__header {
     margin: 1.25rem 1rem 1rem 1rem;
     @include h1-font-mob;
-    font-weight: 500;
+    @include tablet {
+      margin: 0 3rem 1rem;
+      @include h1-font-tab;
+      padding: 0;
+    }
   }
   &__text {
     margin: 0 1rem 1rem 1rem;
     @include p1-font-mob;
+    @include tablet {
+      margin: 1rem 3rem 2rem;
+    }
   }
   &__actions {
     display: flex;
@@ -53,6 +64,11 @@
     justify-content: center;
     gap: 1rem;
     width: 100%;
+    @include tablet {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 3rem;
+    }
   }
   &__button {
     display: flex;
@@ -61,6 +77,10 @@
     border-radius: 1.25rem;
     padding: 0.6rem;
     width: 100%;
+    @include tablet {
+      width: auto;
+      padding: 0.6rem 1rem;
+    }
     &--cancel {
       background-color: $primary-color-3;
       border: 0.0625rem solid $secondary-color-2;
