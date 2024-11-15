@@ -55,7 +55,10 @@ function WarehouseList({ warehouses, setWarehouses }) {
           <div className="warehouse-table__row" key={index}>
             <div className="warehouse-table__cell-pair">
               <h4 className="warehouse-table__title">WAREHOUSE</h4>
-              <Link to={`/${warehouse.id}`} className="warehouse-table__link">
+              <Link
+                to={`/warehouses/${warehouse.id}`}
+                className="warehouse-table__link"
+              >
                 <span className="warehouse-table__link--name">
                   {warehouse.warehouse_name}
                 </span>
