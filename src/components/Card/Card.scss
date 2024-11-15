@@ -49,7 +49,6 @@
     @include tablet {
       padding: 0;
       @include h1-font-tab;
-      width: 100%;
     }
   }
 
@@ -97,6 +96,22 @@
       &::before {
         content: "Edit";
         background-size: 1.375rem;
+      }
+    }
+
+    &--mob {
+      display: block;
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &--tablet {
+      display: none;
+
+      @include tablet {
+        display: block;
       }
     }
   }

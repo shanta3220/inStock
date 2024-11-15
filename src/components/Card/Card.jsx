@@ -28,12 +28,20 @@ function Card({
           <h1 className="card__name">{title}</h1>
           {handleEditOnClick && (
             <button
-              className="card__edit-button"
+              className="card__edit-button card__edit-button--mob"
               onClick={handleEditOnClick}
             ></button>
           )}
         </div>
-        <div className="card__header-section">{headerContent}</div>
+        <div className="card__header-section">
+          {headerContent}
+          {handleEditOnClick && (
+            <button
+              className="card__edit-button card__edit-button--tablet"
+              onClick={handleEditOnClick}
+            ></button>
+          )}
+        </div>
       </div>
       <div className="card__content">{children}</div>
     </div>
