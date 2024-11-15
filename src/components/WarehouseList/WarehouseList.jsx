@@ -5,9 +5,23 @@ import arrowRight from "../../assets/Icons/chevron_right-24px.svg";
 import "./WarehouseList.scss";
 import HeaderCell from "../HeaderCell/HeaderCell";
 import { Link } from "react-router-dom";
+import Modal from "react-modal";
+import DeleteWarehouseModal from "../DeleteWarehouseModal/DeleteWarehouseModal";
+import { useState } from "react";
+Modal.setAppElement("#root");
 
+function WarehouseList({ warehouses, setWarehouses }) {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedWarehouse, setSelectedWarehouse] = useState(null);
 
-function WarehouseList({warehouses}) {
+  const openModal = (warehouse) => {
+    setSelectedWarehouse(warehouse);
+    setModalIsOpen(true);
+  };
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setSelectedWarehouse(null);
+  };
   return (
     <div className="warehouse-table">
       {/* Header row for tablet view */}
@@ -42,18 +56,18 @@ function WarehouseList({warehouses}) {
             <div className="warehouse-table__cell-pair">
               <h4 className="warehouse-table__title">WAREHOUSE</h4>
               <Link
-              to={`/warehouses/${warehouse.id}`}  
-              className="warehouse-table__link"
-            >
-              <span className="warehouse-table__link--name">
-                {warehouse.warehouse_name}
-              </span>
-              <img
-                src={arrowRight}
-                alt="arrow"
-                className="warehouse-table__arrow"
-              />
-            </Link>
+                to={`/warehouses/${warehouse.id}`}
+                className="warehouse-table__link"
+              >
+                <span className="warehouse-table__link--name">
+                  {warehouse.warehouse_name}
+                </span>
+                <img
+                  src={arrowRight}
+                  alt="arrow"
+                  className="warehouse-table__arrow"
+                />
+              </Link>
             </div>
             <div className="warehouse-table__cell-pair">
               <h4 className="warehouse-table__title">ADDRESS</h4>
@@ -84,13 +98,28 @@ function WarehouseList({warehouses}) {
                 src={deleteIcon}
                 alt="Delete"
                 className="warehouse-table__icon"
+                onClick={() => openModal(warehouse)}
               />
-              <img src={editIcon} alt="Edit" className="warehouse-table__icon" />
+              <img
+                src={editIcon}
+                alt="Edit"
+                className="warehouse-table__icon"
+              />
             </div>
           </div>
         ))
       ) : (
         <div>No warehouses available</div>
+      )}
+      {selectedWarehouse && (
+        <DeleteWarehouseModal
+          isOpen={modalIsOpen}
+          closeModal={closeModal}
+          id={selectedWarehouse.id}
+          warehouseName={selectedWarehouse.warehouse_name}
+          setwarehouseToDisplay={setWarehouses}
+          warehouses={warehouses}
+        />
       )}
     </div>
   );
