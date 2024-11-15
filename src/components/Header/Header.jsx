@@ -15,9 +15,13 @@ function Header() {
 
       <div className="header__nav--items">
         <NavLink
-          className={`header__nav--item ${
-            window.location.pathname.startsWith("/warehouses") ? "active" : ""
-          }`}
+          className={({ isActive }) =>
+            `header__nav--item ${
+              window.location.pathname.includes("/warehouses") || isActive
+                ? "active"
+                : ""
+            }`
+          }
           to={`/`}
         >
           Warehouse
