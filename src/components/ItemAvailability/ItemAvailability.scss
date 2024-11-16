@@ -1,0 +1,78 @@
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
+
+.item-availability {
+    border-top: 1px solid $secondary-color-2;
+  padding: 32px 40px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  
+    &__title {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+  
+    &__section {
+      margin-bottom: 24px;
+    }
+  
+    &__label {
+      @include h3-font-mob;
+    }
+  
+    &__status-options {
+      display: flex;
+      gap: 50%;
+      margin-top: 4px;
+    }
+  
+    &__radio {
+      display: flex;
+      align-items: center;
+  
+      input {
+        margin-left: 0px;
+        margin-right: 4px;
+        margin-top: 0;
+        width: 16px;
+        height: 16px;
+      }
+    }
+  
+    &__radio-text {
+      color: $secondary-color-1;
+      @include h3-font-mob;
+      font-weight: 400;
+
+      &--in-stock {
+        color: $primary-color-1;
+      }
+  
+      &--out-of-stock {
+        color: $primary-color-1;
+      }
+    }
+  
+    &__select {
+        appearance: none; /* Remove default arrow */
+        -webkit-appearance: none; /* Safari fix */
+        background: url('../../assets/Icons/arrow_drop_down-24px.svg') no-repeat right 10px center;
+        background-size: 24px; /* Adjust size of the arrow */
+        padding: 8px 30px 8px 16px; /* Add padding for the custom arrow */
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        margin-top: 4px;
+        font-family: 'Titillium';
+
+        
+  
+      &:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+    }
+  }
+  
