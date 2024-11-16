@@ -11,6 +11,11 @@
     width: 100%;
     gap: 24px;
 
+    @include tablet{
+        justify-content: flex-end;
+        gap: 12px;
+    }
+
     &__button{
     background-color: $primary-color-3;
     width: 100%;
@@ -26,6 +31,15 @@
         background-color: $primary-color-2;
         color: $primary-color-3;
         border: none;
+    }
+
+    &:hover{
+        border-color: $primary-color-1;
+    }
+
+    @include tablet{
+        width: 10%;
+        @include h3-font-tab;
     }
     }
 }

@@ -16,8 +16,12 @@
   }
   
     &__title {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
+      @include h2-font-mob;
+      padding-bottom: 40px;
+
+      @include tablet{
+        @include h2-font-tab;
+      }
     }
   
     &__section {
@@ -26,12 +30,16 @@
   
     &__label {
       @include h3-font-mob;
+      padding-bottom: 4px;
+
+      @include tablet{
+        @include h3-font-tab;
+      }
     }
   
     &__status-options {
       display: flex;
       gap: 50%;
-      margin-top: 4px;
 
       @include tablet{
         gap: 18%;
@@ -84,6 +92,28 @@
         border-color: #007bff;
         box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
       }
+    }
+
+    &__quantity{
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__quantity-input{
+      height: 36px;
+    padding: 0 16px;
+    border-radius: 20px;
+    border: 1px $secondary-color-2 solid;
+    width: 30%;
+    margin-bottom: 24px;
+    &:focus {
+      border: 1px solid $primary-color-2;
+      outline: none;
+    }
+
+    @include tablet{
+      height: 38px;
+    }
     }
   }
   

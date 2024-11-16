@@ -21,12 +21,20 @@
   &__header {
     @include h2-font-mob;
     padding-bottom: 40px;
+
+    @include tablet{
+      @include h2-font-tab;
+    }
   }
 
   &__label {
     @include h3-font-mob;
     font-family: "Titillium";
     padding-bottom: 4px;
+
+    @include tablet{
+      @include h3-font-tab;
+    }
   }
 
   &__input {
@@ -39,6 +47,10 @@
     &:focus {
       border: 1px solid $primary-color-2;
       outline: none;
+    }
+
+    @include tablet{
+      height: 38px;
     }
   }
 
@@ -61,6 +73,11 @@
     font-family: "Titillium";
     @include h3-font-mob;
     font-weight: 400;
+
+    @include tablet{
+      @include h3-font-tab;
+      font-weight: 400;
+    }
   }
 
   &__select{
