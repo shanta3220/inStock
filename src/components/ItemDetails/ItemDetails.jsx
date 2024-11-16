@@ -1,5 +1,4 @@
 import "./ItemDetails.scss";
-import arrowDown from "../../assets/Icons/arrow_drop_down-24px.svg"
 
 const ItemDetails = () => {
   return (
@@ -19,29 +18,18 @@ const ItemDetails = () => {
         Description
       </label>
       <textarea
+        className="item-details__textarea"
         id="details"
         name="details"
-        rows="4" 
-        maxLength="500"
-        className="item-details__textarea"
         placeholder='This 50", 4K LED TV provides a crystal-clear picture and vivid colors.'
       />
       {/* update the placeholder with the item description */}
-      <div className="item-details__dropdown-container">
-        <label className="item-details__label">Category</label>
-        <div className="item-details__input-wrapper">
-          <input
-            className="item-details__input"
-            type="text"
-            placeholder="Select Category"
-          />
-          <img
-            src={arrowDown}
-            alt="Dropdown"
-            className="item-details__dropdown-icon"
-          />
-        </div>
-      </div>
+      <label className="item-details__label">Category</label>
+      <select className="item-details__select">
+        <option value="" disabled>
+          Select an option
+        </option>
+      </select>
     </div>
   );
 };

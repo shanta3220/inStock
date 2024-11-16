@@ -53,11 +53,11 @@ const ItemAvailability = () => {
           value={warehouse}
           onChange={handleWarehouseChange}
         >
-          <option className='item-availability__option' value="Manhattan">Manhattan</option>
-          <option className='item-availability__option' value="Brooklyn">Brooklyn</option>
-          <option className='item-availability__option' value="Queens">Queens</option>
-          <option className='item-availability__option' value="Bronx">Bronx</option>
-          <option className='item-availability__option' value="Staten Island">Staten Island</option>
+          <option  value="Manhattan">Manhattan</option>
+          <option  value="Brooklyn">Brooklyn</option>
+          <option  value="Queens">Queens</option>
+          <option  value="Bronx">Bronx</option>
+          <option  value="Staten Island">Staten Island</option>
         </select>
       </div>
     </div>

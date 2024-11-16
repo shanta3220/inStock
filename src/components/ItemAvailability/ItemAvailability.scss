@@ -55,11 +55,11 @@
     }
   
     &__select {
-        appearance: none; /* Remove default arrow */
-        -webkit-appearance: none; /* Safari fix */
+        appearance: none; 
+        -webkit-appearance: none; 
         background: url('../../assets/Icons/arrow_drop_down-24px.svg') no-repeat right 10px center;
-        background-size: 24px; /* Adjust size of the arrow */
-        padding: 8px 30px 8px 16px; /* Add padding for the custom arrow */
+        background-size: 24px; 
+        padding: 8px 30px 8px 16px; 
         width: 100%;
         border: 1px solid #ccc;
         border-radius: 20px;
