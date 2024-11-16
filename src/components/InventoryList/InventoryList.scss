@@ -15,7 +15,7 @@
 
     @include tablet {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr 0.5fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1rf 0.5fr;
       background-color: $background-color-2;
       width: 100%;
       padding: 0.5rem 2rem;
@@ -235,4 +235,7 @@
       }
     }
   }
+}
+.inventoriesPage__actions {
+  display: none;
 }
