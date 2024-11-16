@@ -1,0 +1,10 @@
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
+
+.buttons-bar{
+    background-color: rgba(247, 248, 249, 0.7);
+    padding : 24px 40px 24px 40px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    box-shadow: 0px 2px 0px 0px rgba(19, 24, 44, 0.1);
+}
