@@ -2,17 +2,18 @@ import "./WarehouseDetailsPage.scss";
 import Card from "../../components/Card/Card";
 import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
 import InventoryList from "../../components/InventoryList/InventoryList";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
 function WarehouseDetailsPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [warehouse, setWarehouse] = useState(null);
   const [inventories, setInventories] = useState([]);
 
   const handleWarehouseEditOnClick = () => {
-    console.log("WarehouseEdit button clicked!", id);
+    navigate(`/warehouses/${id}/edit`);
   };
 
   const handleInventoryEditOnClick = (inventoryItemId) => {
@@ -22,6 +23,7 @@ function WarehouseDetailsPage() {
   const handleInventoryDeleteOnClick = (inventoryItemId) => {
     console.log("delete button clicked!", inventoryItemId);
   };
+
   useEffect(() => {
     const API_URL = import.meta.env.VITE_API_URL;
 

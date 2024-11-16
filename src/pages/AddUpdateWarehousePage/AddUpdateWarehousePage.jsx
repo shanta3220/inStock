@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Card from "../../components/Card/Card";
 
-function AddUpdateWarehousePage({ addNewform }) {
+function AddUpdateWarehousePage() {
   const { id } = useParams();
+  const addWarehouse = id === undefined;
+
+  const navigate = useNavigate();
   const warehouse = null;
 
   useEffect(() => {}, []);
@@ -18,8 +21,8 @@ function AddUpdateWarehousePage({ addNewform }) {
   return (
     <>
       <Card
-        title={addNewform ? "Add New Warehouse" : "Edit Warehouse"}
-        returnPath={`/warehouses/${id}`}
+        title={addWarehouse ? "Add New Warehouse" : "Edit Warehouse"}
+        returnPath={id ? `/warehouses/${id}` : "/"}
       >
         <form className="warehouse-form" onSubmit={handleSubmit}>
           <div className="warehouse-form__category">
@@ -41,9 +44,16 @@ function AddUpdateWarehousePage({ addNewform }) {
           </div>
           <div className="warehouse-form__buttons">
             <button type="submit">
-              {addNewform ? "+ Add Warehouse" : "Save"}
+              {addWarehouse ? "+ Add Warehouse" : "Save"}
             </button>
-            <Link to="/">Cancel</Link>
+            <button
+              type="button"
+              onClick={() => {
+                navigate(`/warehouses/${id}`);
+              }}
+            >
+              Cancel
+            </button>
           </div>
         </form>
       </Card>

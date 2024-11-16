@@ -17,12 +17,9 @@ function App() {
           <Route path="/warehouses/:id" element={<WarehouseDetailsPage />} />
           <Route
             path="/warehouses/:id/edit"
-            element={<AddUpdateWarehousePage addNewform={false} />}
+            element={<AddUpdateWarehousePage />}
           />
-          <Route
-            path="/warehouses/:id/add"
-            element={<AddUpdateWarehousePage addNewform={true} />}
-          />
+          <Route path="/warehouses/add" element={<AddUpdateWarehousePage />} />
           <Route path="/inventory" element={<InventoryPage />} />
         </Routes>
         <Footer />
