@@ -84,9 +84,13 @@
         border-radius: 20px;
         margin-top: 4px;
         font-family: 'Titillium';
+        height: 36px;
 
-        
-  
+        @include tablet{
+          height: 38px;
+        }
+
+    
       &:focus {
         outline: none;
         border-color: #007bff;

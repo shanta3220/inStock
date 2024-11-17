@@ -1,21 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./ItemAvailability.scss";
 
 const ItemAvailability = ({ status, warehouse, quantity, onChange }) => {
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1280);
-  console.log("status", status)
-  console.log("quantity", status)
-
-
-  // Adjust `isDesktop` state when the window is resized
-  useEffect(() => {
-    const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 1280);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  console.log("status", status);
+  console.log("quantity", quantity);
 
   return (
     <div className="item-availability">
@@ -28,8 +16,8 @@ const ItemAvailability = ({ status, warehouse, quantity, onChange }) => {
           <label htmlFor="status-in-stock" className="item-availability__radio">
             <input
               type="radio"
-               id="status-in-stock"
-              name="status-in-stock"
+              id="status-in-stock"
+              name="status"
               value="in-stock"
               checked={status === "in-stock"} // Check based on current status
               onChange={onChange}
@@ -48,7 +36,7 @@ const ItemAvailability = ({ status, warehouse, quantity, onChange }) => {
             <input
               type="radio"
               id="status-out-of-stock"
-              name="status-out-of-stock"
+              name="status"
               value="out-of-stock"
               checked={status === "out-of-stock"} // Check based on current status
               onChange={onChange}
@@ -67,25 +55,27 @@ const ItemAvailability = ({ status, warehouse, quantity, onChange }) => {
       </div>
 
       {/* Quantity Section */}
-      {status === "in-stock" && isDesktop && (
+      {status === "in-stock" && (
         <div className="item-availability__quantity">
           <label htmlFor="quantity" className="item-availability__label">
             Quantity
           </label>
           <input
-          className="item-availability__quantity-input"
-          id="quantity"
-          type="number"
-          name="quantity"
-          value={quantity} // Display current quantity
-          onChange={onChange}
+            className="item-availability__quantity-input"
+            id="quantity"
+            type="number"
+            name="quantity"
+            value={quantity} // Display current quantity
+            onChange={onChange}
           />
         </div>
       )}
 
       {/* Warehouse Section */}
       <div className="item-availability__section">
-        <label htmlFor="warehouse" className="item-availability__label">Warehouse</label>
+        <label htmlFor="warehouse" className="item-availability__label">
+          Warehouse
+        </label>
         <select
           className="item-availability__select"
           id="warehouse"
