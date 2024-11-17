@@ -13,6 +13,30 @@
     align-items: flex-end;
   }
 
+  &__error-list {
+    border-top: 1px solid $secondary-color-2;
+    color: $supporting-color-2;
+    width: 100%;
+    border-radius: 0.25rem;
+    padding: 1rem 3rem 1rem;
+    margin-bottom: -1.5rem;
+    @include h3-font-mob;
+    line-height: 2rem;
+
+    @include tablet {
+      margin: auto;
+      width: inherit;
+      padding-left: 2rem;
+      border: 1px solid $supporting-color-2;
+      @include h3-font-tab;
+      line-height: 1.5rem;
+    }
+
+    li {
+      list-style-type: circle;
+    }
+  }
+
   &__contents {
     display: flex;
     flex-direction: column;
