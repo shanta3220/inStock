@@ -81,6 +81,9 @@
 }
 .inventory-table__row {
   display: none;
+  @include tablet {
+    display: none;
+  }
 }
 .inventories-table {
   &__header {
@@ -143,7 +146,7 @@
   @include tablet {
     .inventory-table__row {
       .inventory-table__cell-pair:nth-child(2) {
-        order: 2;
+        order: 1;
       }
 
       .inventory-table__cell-pair:nth-child(3) {
