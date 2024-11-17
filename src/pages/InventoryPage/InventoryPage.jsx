@@ -7,9 +7,15 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import InventoryDetailsPage from "../InventoryDetailsPage/InventoryDetailsPage";
 import EditInventoryPage from "../EditInventoryPage/EditInventoryPage";
+import { useNavigate } from "react-router-dom";
 
 function InventoryPage() {
+  const navigate = useNavigate();
   const [inventories, setInventories] = useState([]);
+
+  const handleAddNewInventoryClick = () => {
+    navigate('/add-inventory'); // Navigate to the Add New Inventory page
+  };
 
   useEffect(() => {
     const API_URL = import.meta.env.VITE_API_URL;
@@ -42,7 +48,9 @@ function InventoryPage() {
                 />
               </button>
             </div>
-            <button className="option__add-button">+ Add New Inventory</button>
+              <button className="option__add-button" onClick={handleAddNewInventoryClick}>
+                + Add New Inventory
+              </button>
           </div>
         }
       >

@@ -7,9 +7,9 @@ import axios from "axios";
 import './AddNewInventoryPage.scss'
 
 const AddNewInventoryPage = () => {
-  // Initialize form state with placeholder values
-  const [formState, setFormState] = useState({
-    warehouse_id: 1, // Default warehouse ID (adjust as necessary)
+
+    const [formState, setFormState] = useState({
+    warehouse_id: 1, // Default warehouse ID 
     item_name: "",
     description: "",
     category: "",
@@ -57,8 +57,7 @@ const AddNewInventoryPage = () => {
       });
       setSubmitted(false); // Reset the submitted state
 
-      // Redirect or handle post-submission actions as needed
-      navigate("/inventory"); // Uncomment if using react-router for navigation
+      navigate("/inventory"); 
     } catch (error) {
       console.error("Error adding inventory item:", error);
     }
@@ -72,7 +71,6 @@ const AddNewInventoryPage = () => {
         <ItemAvailability formState={formState} onChange={handleFormChange} submitted={submitted} />
         </div>
         <CancelSaveButtons />
-
       </form>
     </Card>
   );
