@@ -25,10 +25,11 @@ const ItemAvailability = ({ status, warehouse, quantity, onChange }) => {
       <div className="item-availability__section">
         <label className="item-availability__label">Status</label>
         <div className="item-availability__status-options">
-          <label className="item-availability__radio">
+          <label htmlFor="status-in-stock" className="item-availability__radio">
             <input
               type="radio"
-              name="status"
+               id="status-in-stock"
+              name="status-in-stock"
               value="in-stock"
               checked={status === "in-stock"} // Check based on current status
               onChange={onChange}
@@ -43,10 +44,11 @@ const ItemAvailability = ({ status, warehouse, quantity, onChange }) => {
               In stock
             </span>
           </label>
-          <label className="item-availability__radio">
+          <label htmlFor="status-out-of-stock" className="item-availability__radio">
             <input
               type="radio"
-              name="status"
+              id="status-out-of-stock"
+              name="status-out-of-stock"
               value="out-of-stock"
               checked={status === "out-of-stock"} // Check based on current status
               onChange={onChange}
@@ -83,9 +85,10 @@ const ItemAvailability = ({ status, warehouse, quantity, onChange }) => {
 
       {/* Warehouse Section */}
       <div className="item-availability__section">
-        <label className="item-availability__label">Warehouse</label>
+        <label htmlFor="warehouse" className="item-availability__label">Warehouse</label>
         <select
           className="item-availability__select"
+          id="warehouse"
           name="warehouse"
           value={warehouse} // Display current warehouse
           onChange={onChange}

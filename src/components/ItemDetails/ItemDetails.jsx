@@ -10,9 +10,9 @@ const ItemDetails = ({ formState, onChange }) => {
       </label>
       <input
         id="item_name"
-        name="item_name" 
+        name="item_name"
         placeholder="Enter item name"
-        value={formState.item_name || ""} 
+        value={formState.item_name || ""}
         className="item-details__input"
         onChange={onChange}
       />
@@ -23,17 +23,18 @@ const ItemDetails = ({ formState, onChange }) => {
       <textarea
         className="item-details__textarea"
         id="description"
-        name="description" 
+        name="description"
         placeholder="Enter description"
-        value={formState.description || ""} 
+        value={formState.description || ""}
         onChange={onChange}
       />
 
-      <label htmlFor="category" id="category" className="item-details__label">
+      <label htmlFor="category" className="item-details__label">
         Category
       </label>
       <select
         className="item-details__select"
+        id="category"
         name="category"
         value={formState.category || ""}
         onChange={onChange}
