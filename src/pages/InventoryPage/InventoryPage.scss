@@ -79,6 +79,13 @@
     }
   }
 }
+.inventory-table__row {
+  display: none;
+  @include tablet {
+    display: none;
+  }
+}
+
 .inventory-table {
   &__header {
     display: none;
@@ -88,6 +95,10 @@
       grid-template-columns: 1fr 1fr 1fr 1fr 0.5fr 0.5fr;
       background-color: $background-color-2;
       width: 100%;
+      padding: 0.5rem 2rem;
+    }
+    @include desktop {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 0.5fr;
       padding: 0.5rem 2rem;
     }
   }
@@ -155,7 +166,7 @@
 
 .inventoriesPage__actions {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   margin-top: 0.5rem;
   margin-right: 1.625rem;
   width: 100%;

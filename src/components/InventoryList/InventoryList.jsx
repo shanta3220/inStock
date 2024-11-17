@@ -5,9 +5,14 @@ import "./InventoryList.scss";
 import HeaderCell from "../HeaderCell/HeaderCell";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import DeleteInventoryModal from "../DeleteInventoryModal/DeleteInventoryModal";
+import Modal from "react-modal";
+
+Modal.setAppElement("#root");
 
 function InventoryList({
   inventories,
+  setInventories,
   handleInventoryEditOnClick,
   handleInventoryDeleteOnClick,
 }) {
@@ -27,10 +32,21 @@ function InventoryList({
   }, []);
 
   const quantityLabel = showAllInventories || isMobile ? "QTY" : "QUANTITY";
+  // Delete Modal
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedInventory, setSelectedInventory] = useState(null);
 
+  const openModal = (inventoryItem) => {
+    setSelectedInventory(inventoryItem);
+    setModalIsOpen(true);
+  };
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setSelectedInventory(null);
+  };
   return (
-    <div className="warehouse-table">
-      <div className="warehouse-table__header">
+    <div className="inventory-table inventories-table">
+      <div className="inventory-table__header inventoriesPage__header">
         <HeaderCell
           label="INVENTORY ITEM"
           sortable
@@ -64,7 +80,10 @@ function InventoryList({
       {/* Data rows */}
       {inventories.length > 0 ? (
         inventories.map((inventory, index) => (
-          <div className="inventory-table__row" key={index}>
+          <div
+            className="inventory-table__row inventoriesPage__row"
+            key={index}
+          >
             <div className="inventory-table__cell-pair">
               <h4 className="inventory-table__title">INVENTORY ITEM</h4>
               <Link
@@ -114,13 +133,19 @@ function InventoryList({
               </div>
             )}
             {/* Action buttons */}
-            <div className="warehouse-table__actions">
+            <div className="inventory-table__actions ">
               <img
                 src={deleteIcon}
                 alt="Delete"
-                className="warehouse-table__icon"
+                className="inventory-table__icon"
+                onClick={() => openModal(inventory)}
+              />
+              <img
+                src={editIcon}
+                alt="Edit"
+                className="inventory-table__icon"
                 onClick={() => {
-                  handleInventoryDeleteOnClick(inventory.id);
+                  handleInventoryEditOnClick(inventory.id);
                 }}
               />
               <Link
@@ -128,7 +153,7 @@ function InventoryList({
                   pathname: `/inventory/${inventory.id}`, // Dynamically build the edit page URL
                 }}
                 state={{
-                  inventoryId: inventory.id, 
+                  inventoryId: inventory.id,
                   ...inventory, // Pass the entire inventory object
                 }}
               >
@@ -137,7 +162,7 @@ function InventoryList({
                   alt="Edit"
                   className="warehouse-table__icon"
                   onClick={() => {
-                    handleInventoryEditOnClick(inventory);
+                    handleInventoryEditOnClick(inventoryItem);
                   }}
                 />
               </Link>
@@ -146,6 +171,16 @@ function InventoryList({
         ))
       ) : (
         <div>No inventories available</div>
+      )}
+      {selectedInventory && (
+        <DeleteInventoryModal
+          isOpen={modalIsOpen}
+          closeModal={closeModal}
+          id={selectedInventory.id}
+          item={selectedInventory.item_name}
+          setInventoryToDisplay={setInventories}
+          inventories={inventories}
+        />
       )}
     </div>
   );

@@ -1,5 +1,6 @@
 @use "../../styles/partials/variables.scss" as *;
 @use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/typography" as *;
 
 .inventory-info {
   display: flex;
@@ -47,6 +48,7 @@
   &__item {
     color: $primary-color-1;
     font-size: 1.75rem;
+    font-weight: 600;
     margin: 0rem;
     padding: 0.5rem;
     width: 13rem;
@@ -64,7 +66,6 @@
   }
 
   &__heading {
-    font-family: "Titillium Web";
     font-size: 0.6875rem;
     color: $secondary-color-1;
     text-transform: uppercase;
@@ -76,9 +77,8 @@
   }
 
   &__text {
-    font-family: "Titillium Web", sans-serif;
     font-size: 0.8125rem;
-    margin-top: 0.2rem;
+    margin: 0.5rem 0;
     max-width: 21rem;
 
     @include tablet {
@@ -92,7 +92,6 @@
   }
 
   &__text-status {
-    font-family: "Titillium Web", sans-serif;
     font-size: 0.8125rem;
     margin-top: 0rem;
     max-width: 21rem;
@@ -112,12 +111,12 @@
     padding-left: 0rem;
 
     @include tablet {
-      flex-direction: column;
+      flex-direction: row;
     }
   }
 
   &__description-wrapper {
-    margin: 1rem 1.5rem 0rem 1.5rem;
+    margin: 1rem 1.5rem 0rem;
 
     @include tablet {
       padding-right: 2.8rem;
@@ -149,6 +148,22 @@
       margin-top: 1rem;
       width: 7.6rem;
     }
+    &-red {
+      height: 1.5625rem;
+      width: 5.75rem;
+      color: $supporting-color-2;
+      background-color: $supporting-background-color-2;
+      border-radius: 20px;
+      margin: 0.5rem 0 0.75rem 0;
+    }
+    &-green {
+      height: 1.5rem;
+      width: 5.8rem;
+      color: $supporting-color-1;
+      background-color: $supporting-background-color-1;
+      border-radius: 1.25rem;
+      margin: 0.5rem 0 0.75rem 0;
+    }
   }
 
   &__quantity {
@@ -170,9 +185,9 @@
     }
   }
 
-  //   &__category-heading {
-  //     padding: 0rem 1.5rem;
-  //   }
+  &__category-heading {
+    padding: 0rem 1.5rem;
+  }
 
   &__warehouse {
     padding: 0rem 1.5rem;
@@ -188,16 +203,15 @@
 
   &__edit {
     padding: 0 1rem;
-    font-family: "Titillium Web";
     font-weight: 400;
     background-color: $primary-color-2;
     border-radius: 1.5rem;
     color: $primary-color-3;
     border: none;
     cursor: grab;
-    height: 2rem;
-    width: 100%;
-    background-image: url("../../assets/images/icons/edit-24px white.svg");
+    height: 2.25rem;
+    width: 2.25rem;
+    background-image: url("../../assets/icons/edit-white-24px.svg");
     background-repeat: no-repeat;
     background-position: center;
 
@@ -208,7 +222,8 @@
       align-items: center;
       background-position: 0.5rem 0.4rem;
       background-size: 1.2rem;
-      max-width: 4.5rem;
+      width: 5.0625rem;
+      height: 2.375rem;
     }
   }
 
@@ -231,3 +246,5 @@
     }
   }
 }
+
+//
