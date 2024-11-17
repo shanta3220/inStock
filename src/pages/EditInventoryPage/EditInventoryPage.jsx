@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import CancelSaveButtons from "../../components/CancelSaveButtons/CancelSaveButtons";
@@ -8,41 +8,47 @@ import ItemDetails from "../../components/ItemDetails/ItemDetails";
 import "./EditInventoryPage.scss";
 
 function EditInventoryPage() {
-  const id = "1"; // Manually set the ID for testing purposes
+  const { id } = useParams(); // Get the inventory ID from URL
+  const { state } = useLocation(); // Optional state from navigation
   const navigate = useNavigate();
+
   const [formState, setFormState] = useState({
-    warehouse_id: "",
-    item_name: "",
-    description: "",
-    category: "",
-    status: "",
-    quantity: "",
+    warehouse_id: state?.warehouse_id || "",
+    warehouse_name: state?.warehouse_name || "",
+    item_name: state?.item_name || "",
+    description: state?.description || "",
+    category: state?.category || "",
+    status: state?.status || "", // Ensure status is passed from state
+    quantity: state?.quantity || 0, // Ensure quantity is passed from state
   });
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const API_URL = import.meta.env.VITE_API_URL;
 
-    const fetchItemData = async () => {
-      try {
-        const response = await axios.get(`${API_URL}/api/inventories/${id}`);
-        console.log("Fetched data:", response.data);
-        const itemData = response.data[0];
-        setFormState(itemData); // Assuming response matches the form state structure
-        console.log("Updated formState after setting:", formState)
-        
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching inventory item:", error);
-        setLoading(false);
-      }
-    };
-
-    fetchItemData();
-  }, [id]);
-  useEffect(() => {
-    console.log("Form state updated:", formState); // Log whenever formState is updated
-  }, [formState]);
+    // Only fetch data if not available in state (fallback if needed)
+    if (id && !state) {
+      const fetchItemData = async () => {
+        try {
+          const response = await axios.get(`${API_URL}/api/inventories/${id}`);
+          const itemData = response.data;
+          setFormState({
+            ...itemData,
+            warehouse_id: state?.warehouse_id || itemData.warehouse_id,
+            warehouse_name: state?.warehouse_name || itemData.warehouse_name,
+          });
+          setLoading(false);
+        } catch (error) {
+          console.error("Error fetching inventory item:", error);
+          setLoading(false);
+        }
+      };
+      fetchItemData();
+    } else {
+      setLoading(false); // If data is in state, just set loading to false
+    }
+  }, [id, state]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -53,7 +59,8 @@ function EditInventoryPage() {
     e.preventDefault();
     try {
       const API_URL = import.meta.env.VITE_API_URL;
-      await axios.put(`${API_URL}/api/inventories/${id}`, formState);
+     const response= await axios.put(`${API_URL}/api/inventories/${id}`, formState);
+      console.log("Response from server:", response);
       navigate("/inventory");
     } catch (error) {
       console.error("Error updating inventory item:", error);
@@ -69,7 +76,13 @@ function EditInventoryPage() {
       <form onSubmit={handleSubmit}>
         <div className="form-fields">
           <ItemDetails formState={formState} onChange={handleInputChange} />
-          <ItemAvailability status={formState.status} quantity={formState.quantity} onChange={handleInputChange} />
+          <ItemAvailability
+           status={formState.status.toLowerCase().replace(/\s+/g, "-")} // Normalize status
+           warehouse={formState.warehouse_name}
+           quantity={formState.quantity}
+           onChange={handleInputChange}
+            
+          />
         </div>
         <CancelSaveButtons />
       </form>
