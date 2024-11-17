@@ -54,13 +54,16 @@
   }
 
   &__back_image {
-    width: 24px;
-    height: 24px;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: -0.5rem;
     cursor: pointer;
   }
 
   &__name {
     flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
     @include h1-font-mob;
 
     @include tablet {

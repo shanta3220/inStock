@@ -4,9 +4,11 @@ import searchIcon from "../../assets/Icons/search-24px.svg";
 import WarehouseList from "../../components/WarehouseList/WarehouseList";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function WarehousesPage() {
   const [warehouses, setWarehouses] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const API_URL = import.meta.env.VITE_API_URL;
@@ -41,7 +43,14 @@ function WarehousesPage() {
                 />
               </button>
             </div>
-            <button className="option__add-button">+ Add New Warehouse</button>
+            <button
+              className="option__add-button"
+              onClick={() => {
+                navigate(`/warehouses/add`);
+              }}
+            >
+              + Add New Warehouse
+            </button>
           </div>
         }
       >

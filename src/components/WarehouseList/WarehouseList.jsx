@@ -4,15 +4,17 @@ import editIcon from "../../assets/Icons/edit-24px.svg";
 import arrowRight from "../../assets/Icons/chevron_right-24px.svg";
 import "./WarehouseList.scss";
 import HeaderCell from "../HeaderCell/HeaderCell";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import DeleteWarehouseModal from "../DeleteWarehouseModal/DeleteWarehouseModal";
 import { useState } from "react";
+
 Modal.setAppElement("#root");
 
 function WarehouseList({ warehouses, setWarehouses }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedWarehouse, setSelectedWarehouse] = useState(null);
+  const navigate = useNavigate();
 
   const openModal = (warehouse) => {
     setSelectedWarehouse(warehouse);
@@ -104,6 +106,9 @@ function WarehouseList({ warehouses, setWarehouses }) {
                 src={editIcon}
                 alt="Edit"
                 className="warehouse-table__icon"
+                onClick={() => {
+                  navigate(`/warehouses/${warehouse.id}/edit`);
+                }}
               />
             </div>
           </div>
