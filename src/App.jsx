@@ -6,6 +6,8 @@ import WarehouseFormPage from "./pages/WarehouseFormPage/WarehouseFormPage";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import WarehouseDetailsPage from "./pages/WarehouseDetailsPage/WarehouseDetailsPage";
+import InventoryDetailsPage from "./pages/InventoryDetailsPage/InventoryDetailsPage";
+import EditInventoryPage from "./pages/EditInventoryPage/EditInventoryPage";
 
 function App() {
   return (
@@ -18,6 +20,9 @@ function App() {
           <Route path="/warehouses/:id/edit" element={<WarehouseFormPage />} />
           <Route path="/warehouses/add" element={<WarehouseFormPage />} />
           <Route path="/inventory" element={<InventoryPage />} />
+          <Route path="/inventories/:id" element={<InventoryDetailsPage />} />
+
+          <Route path="/inventory/:id" element={<EditInventoryPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>

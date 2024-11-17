@@ -1,0 +1,184 @@
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
+
+.option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+
+  @include tablet {
+    flex-direction: row;
+    margin-top: 0;
+    padding: 0;
+    margin-bottom: 0;
+    gap: 0.625rem;
+  }
+
+  &__search-bar {
+    display: flex;
+    align-items: center;
+    border: 0.0625rem solid $secondary-color-2;
+    border-radius: 1.25rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    height: 2.25rem;
+
+    @include tablet {
+      height: 2.375rem;
+      margin-bottom: 0;
+    }
+  }
+
+  &__search-input {
+    border: none;
+    outline: none;
+    width: 100%;
+    border-radius: 1.25rem 0 0 1.25rem;
+    @include h3-font-mob;
+    font-weight: 400;
+
+    @include tablet {
+      @include h3-font-tab;
+      font-weight: 400;
+    }
+  }
+
+  &__search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  &__add-button {
+    background-color: $primary-color-2;
+    width: 100%;
+    color: #ffffff;
+    @include h3-font-mob;
+    font-family: "Titillium";
+    border: none;
+    border-radius: 1.5625rem;
+    cursor: pointer;
+    height: 2.25rem;
+
+    @include tablet {
+      height: 2.375rem;
+      @include h3-font-tab;
+    }
+  }
+}
+.inventory-table__row {
+  display: none;
+  @include tablet {
+    display: none;
+  }
+}
+
+.inventory-table {
+  &__header {
+    display: none;
+
+    @include tablet {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 0.5fr 0.5fr;
+      background-color: $background-color-2;
+      width: 100%;
+      padding: 0.5rem 2rem;
+    }
+    @include desktop {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 0.5fr;
+      padding: 0.5rem 2rem;
+    }
+  }
+}
+
+.inventoriesPage__header {
+  display: none;
+  @include tablet {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 0.5fr 0.5fr;
+    background-color: $background-color-2;
+    width: 100%;
+    padding: 0.5rem 2rem;
+  }
+}
+
+.inventoriesPage__row {
+  display: flex;
+  flex-direction: row;
+  border-top: 1px solid $secondary-color-2;
+  padding: 1.25rem 2rem 1.25rem;
+  flex-wrap: wrap;
+
+  @include tablet {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 0.5fr 0.5fr;
+    font-weight: bold;
+    border-bottom: 1px solid $secondary-color-2;
+    border-top: 0;
+    padding: 0 2rem 1.25rem;
+    margin-bottom: 0;
+  }
+
+  .inventory-table__cell-pair:nth-child(2) {
+    order: 2;
+  }
+
+  .inventory-table__cell-pair:nth-child(5) {
+    order: 3;
+  }
+
+  .inventory-table__cell-pair:nth-child(4) {
+    order: 2;
+  }
+
+  @include tablet {
+    .inventory-table__row {
+      .inventory-table__cell-pair:nth-child(2) {
+        order: 2;
+      }
+
+      .inventory-table__cell-pair:nth-child(3) {
+        order: 3;
+      }
+
+      .inventory-table__cell-pair:nth-child(4) {
+        order: 4;
+      }
+      .inventory-table__cell-pair:nth-child(5) {
+        order: 5;
+      }
+    }
+  }
+}
+
+.inventoriesPage__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 0.5rem;
+  margin-right: 1.625rem;
+  width: 100%;
+
+  @include tablet {
+    // justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 0;
+    margin-right: 0;
+  }
+
+  @include desktop {
+    gap: 2.5rem;
+  }
+}

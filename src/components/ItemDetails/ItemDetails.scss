@@ -1,0 +1,106 @@
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
+
+.item-details {
+  border-top: 1px solid $secondary-color-2;
+  padding: 32px 40px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 32px;
+
+  @include tablet{
+    margin-top: 0;
+    padding-right: 24px;
+    border-right: 1px solid $secondary-color-2;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-top: 0;
+  }
+
+  &__header {
+    @include h2-font-mob;
+    padding-bottom: 40px;
+
+    @include tablet{
+      @include h2-font-tab;
+    }
+  }
+
+  &__label {
+    @include h3-font-mob;
+    font-family: "Titillium";
+    padding-bottom: 4px;
+
+    @include tablet{
+      @include h3-font-tab;
+    }
+  }
+
+  &__input {
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 20px;
+    border: 1px $secondary-color-2 solid;
+    width: 100%;
+    margin-bottom: 24px;
+    &:focus {
+      border: 1px solid $primary-color-2;
+      outline: none;
+    }
+
+    @include tablet{
+      height: 38px;
+    }
+  }
+
+  &__textarea {
+    padding: 0 16px;
+    border-radius: 20px;
+    border: 1px $secondary-color-2 solid;
+    width: 100%;
+    margin-bottom: 24px;
+    padding-top: 8px;
+    height: 120px;
+    &:focus {
+      border: 1px solid $primary-color-2;
+      outline: none;
+    }
+  }
+  &__input::placeholder,
+  &__textarea::placeholder {
+    color: $primary-color-1;
+    font-family: "Titillium";
+    @include h3-font-mob;
+    font-weight: 400;
+
+    @include tablet{
+      @include h3-font-tab;
+      font-weight: 400;
+    }
+  }
+
+  &__select{
+    appearance: none; 
+        -webkit-appearance: none; 
+        background: url('../../assets/Icons/arrow_drop_down-24px.svg') no-repeat right 10px center;
+        background-size: 24px; 
+        padding: 8px 30px 8px 16px; 
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        margin-top: 4px;
+        font-family: 'Titillium';
+        height: 36px;
+
+        @include tablet{
+          height: 38px;
+        }
+
+        &:focus {
+          outline: none;
+          border-color: #007bff;
+          box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+  }
+}

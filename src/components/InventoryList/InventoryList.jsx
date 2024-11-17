@@ -29,8 +29,8 @@ function InventoryList({
   const quantityLabel = showAllInventories || isMobile ? "QTY" : "QUANTITY";
 
   return (
-    <div className="warehouse-table">
-      <div className="warehouse-table__header">
+    <div className="inventory-table inventories-table">
+      <div className="inventory-table__header inventoriesPage__header">
         <HeaderCell
           label="INVENTORY ITEM"
           sortable
@@ -64,7 +64,10 @@ function InventoryList({
       {/* Data rows */}
       {inventories.length > 0 ? (
         inventories.map((inventory, index) => (
-          <div className="inventory-table__row" key={index}>
+          <div
+            className="inventory-table__row inventoriesPage__row"
+            key={index}
+          >
             <div className="inventory-table__cell-pair">
               <h4 className="inventory-table__title">INVENTORY ITEM</h4>
               <Link
@@ -114,11 +117,11 @@ function InventoryList({
               </div>
             )}
             {/* Action buttons */}
-            <div className="warehouse-table__actions">
+            <div className="inventory-table__actions ">
               <img
                 src={deleteIcon}
                 alt="Delete"
-                className="warehouse-table__icon"
+                className="inventory-table__icon"
                 onClick={() => {
                   handleInventoryDeleteOnClick(inventory.id);
                 }}
@@ -126,11 +129,29 @@ function InventoryList({
               <img
                 src={editIcon}
                 alt="Edit"
-                className="warehouse-table__icon"
+                className="inventory-table__icon"
                 onClick={() => {
                   handleInventoryEditOnClick(inventory.id);
                 }}
               />
+              <Link
+                to={{
+                  pathname: `/inventory/${inventory.id}`, // Dynamically build the edit page URL
+                }}
+                state={{
+                  inventoryId: inventory.id,
+                  ...inventory, // Pass the entire inventory object
+                }}
+              >
+                <img
+                  src={editIcon}
+                  alt="Edit"
+                  className="warehouse-table__icon"
+                  onClick={() => {
+                    handleInventoryEditOnClick(inventory);
+                  }}
+                />
+              </Link>
             </div>
           </div>
         ))
