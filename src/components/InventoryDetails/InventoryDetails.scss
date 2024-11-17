@@ -94,7 +94,7 @@
     font-size: 0.8125rem;
     margin-top: 0rem;
     max-width: 21rem;
-    // text-align: center;
+    text-align: center;
 
     @include tablet {
       font-size: 0.875rem;
@@ -146,6 +146,22 @@
     @include tablet {
       margin-top: 1rem;
       width: 7.6rem;
+    }
+    &-red {
+      height: 1.5625rem;
+      width: 5.75rem;
+      color: $supporting-color-2;
+      background-color: $supporting-background-color-2;
+      border-radius: 20px;
+      margin: 0.5rem 0 0.75rem 0;
+    }
+    &-green {
+      height: 1.5rem;
+      width: 5.8rem;
+      color: $supporting-color-1;
+      background-color: $supporting-background-color-1;
+      border-radius: 1.25rem;
+      margin: 0.5rem 0 0.75rem 0;
     }
   }
 

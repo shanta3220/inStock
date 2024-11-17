@@ -10,10 +10,10 @@ function InventoryDetails({ inventory, warehouse }) {
   };
 
   let statusColor = "";
-  if (inventory.status === "Out of stock") {
+  if (inventory.status === "Out of Stock") {
     statusColor = "inventory-info__status-red";
   } else {
-    statusColor = "inventory-info__status";
+    statusColor = "inventory-info__status-green";
   }
 
   return (
@@ -26,7 +26,7 @@ function InventoryDetails({ inventory, warehouse }) {
               src={arrow}
               alt="Arrow to go back"
             /> */}
-            <p className="inventory-info__item">{inventory.item_name}</p>
+            <h1 className="inventory-info__item">{inventory.item_name}</h1>
           </div>
         </NavLink>
         <div className="inventory-info__button">
@@ -64,7 +64,7 @@ function InventoryDetails({ inventory, warehouse }) {
           </div>
           <div className="inventory-info__warehouse">
             <h2 className="inventory-info__heading">Warehouse: </h2>
-            <p className="inventory-info__text">{warehouse.warehouse_id}</p>
+            <p className="inventory-info__text">{warehouse.warehouse_name}</p>
           </div>
         </div>
       </div>
