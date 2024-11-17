@@ -5,9 +5,14 @@ import "./InventoryList.scss";
 import HeaderCell from "../HeaderCell/HeaderCell";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import DeleteInventoryModal from "../DeleteInventoryModal/DeleteInventoryModal";
+import Modal from "react-modal";
+
+Modal.setAppElement("#root");
 
 function InventoryList({
   inventories,
+  setInventories,
   handleInventoryEditOnClick,
   handleInventoryDeleteOnClick,
 }) {
@@ -27,7 +32,18 @@ function InventoryList({
   }, []);
 
   const quantityLabel = showAllInventories || isMobile ? "QTY" : "QUANTITY";
+  // Delete Modal
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedInventory, setSelectedInventory] = useState(null);
 
+  const openModal = (inventoryItem) => {
+    setSelectedInventory(inventoryItem);
+    setModalIsOpen(true);
+  };
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setSelectedInventory(null);
+  };
   return (
     <div className="inventory-table inventories-table">
       <div className="inventory-table__header inventoriesPage__header">
@@ -122,9 +138,7 @@ function InventoryList({
                 src={deleteIcon}
                 alt="Delete"
                 className="inventory-table__icon"
-                onClick={() => {
-                  handleInventoryDeleteOnClick(inventory.id);
-                }}
+                onClick={() => openModal(inventory)}
               />
               <img
                 src={editIcon}
@@ -148,7 +162,7 @@ function InventoryList({
                   alt="Edit"
                   className="warehouse-table__icon"
                   onClick={() => {
-                    handleInventoryEditOnClick(inventory);
+                    handleInventoryEditOnClick(inventoryItem);
                   }}
                 />
               </Link>
@@ -157,6 +171,16 @@ function InventoryList({
         ))
       ) : (
         <div>No inventories available</div>
+      )}
+      {selectedInventory && (
+        <DeleteInventoryModal
+          isOpen={modalIsOpen}
+          closeModal={closeModal}
+          id={selectedInventory.id}
+          item={selectedInventory.item_name}
+          setInventoryToDisplay={setInventories}
+          inventories={inventories}
+        />
       )}
     </div>
   );
