@@ -3,17 +3,17 @@ import { useNavigate, NavLink } from "react-router-dom";
 import arrow from "../../assets/Icons/arrow_back-24px.svg";
 import "./InventoryDetails.scss";
 
-function InventoryDetails({ inventory }) {
+function InventoryDetails({ inventory, warehouse }) {
   const navEdit = useNavigate();
   const handleEditClick = () => {
     navEdit(`/inventory/edit/${inventory}`);
   };
 
   let statusColor = "";
-  if (inventory.status === "Out of stock") {
+  if (inventory.status === "Out of Stock") {
     statusColor = "inventory-info__status-red";
   } else {
-    statusColor = "inventory-info__status";
+    statusColor = "inventory-info__status-green";
   }
 
   return (
@@ -21,12 +21,12 @@ function InventoryDetails({ inventory }) {
       <div className="inventory-info__top">
         <NavLink className="inventory-info__name" to={`/inventory`}>
           <div>
-            <img
+            {/* <img
               className="inventory-info__arrow"
               src={arrow}
               alt="Arrow to go back"
-            />
-            <p className="inventory-info__item">{inventory.item_name}</p>
+            /> */}
+            <h1 className="inventory-info__item">{inventory.item_name}</h1>
           </div>
         </NavLink>
         <div className="inventory-info__button">
