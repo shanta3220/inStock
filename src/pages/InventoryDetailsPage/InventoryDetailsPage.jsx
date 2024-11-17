@@ -23,7 +23,7 @@ function InventoryDetailsPage() {
         const { data: inventoryData } = await axios.get(
           `${API_URL}/api/inventories/${id}`
         );
-        setInventoryItem(inventoryData[0]);
+        setInventoryItem(inventoryData);
       } catch (error) {
         console.error(
           "Error fetching inventory or warehouse data:",
