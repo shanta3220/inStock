@@ -134,6 +134,24 @@ function InventoryList({
                   handleInventoryEditOnClick(inventory.id);
                 }}
               />
+              <Link
+                to={{
+                  pathname: `/inventory/${inventory.id}`, // Dynamically build the edit page URL
+                }}
+                state={{
+                  inventoryId: inventory.id,
+                  ...inventory, // Pass the entire inventory object
+                }}
+              >
+                <img
+                  src={editIcon}
+                  alt="Edit"
+                  className="warehouse-table__icon"
+                  onClick={() => {
+                    handleInventoryEditOnClick(inventory);
+                  }}
+                />
+              </Link>
             </div>
           </div>
         ))
