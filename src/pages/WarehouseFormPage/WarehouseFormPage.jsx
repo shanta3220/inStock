@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Card from "../../components/Card/Card";
-import errorIcon from "../../assets/Icons/error-24px.svg";
 import WarehouseFormInput from "../../components/WarehouseForumInput/WarehouseFormInput";
 
 function WarehouseFormPage() {
@@ -21,7 +20,7 @@ function WarehouseFormPage() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {}, []);
+  // fields in the form
   const [formData, setFormData] = useState({
     name: "",
     address: "",
@@ -33,6 +32,7 @@ function WarehouseFormPage() {
     email: "",
   });
 
+  // state for each field's error messages
   const [errorMessages, setErrorMessages] = useState({
     name: "",
     address: "",
@@ -43,6 +43,34 @@ function WarehouseFormPage() {
     phoneNumber: "",
     email: "",
   });
+
+  // fetch warehouse and set the form data if there is an warehouse id to edit
+  useEffect(() => {
+    if (id) {
+      const fetchAndSetFormData = async () => {
+        try {
+          const API_URL = import.meta.env.VITE_API_URL;
+          const { data } = await axios.get(`${API_URL}/api/warehouses/${id}`);
+          if (data) {
+            setFormData({
+              name: data.warehouse_name ?? "",
+              address: data.address ?? "",
+              city: data.city ?? "",
+              country: data.country ?? "",
+              contactName: data.contact_name ?? "",
+              position: data.contact_position ?? "",
+              phoneNumber: data.contact_phone ?? "",
+              email: data.contact_email ?? "",
+            });
+          }
+        } catch (e) {
+          console.error("Failed to fetch the warehouse:", e);
+        }
+      };
+
+      fetchAndSetFormData();
+    }
+  }, [id]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -57,8 +85,6 @@ function WarehouseFormPage() {
     if (hasAnyErrors) {
       return;
     }
-
-    const API_URL = import.meta.env.VITE_API_URL;
     const warehouseObject = {
       warehouse_name: formData.name,
       address: formData.address,
@@ -70,24 +96,30 @@ function WarehouseFormPage() {
       contact_email: formData.email,
     };
 
-    const updateOrAddWarehouse = async () => {
+    const updateOrAddWarehouseToApi = async () => {
       try {
+        const API_URL = import.meta.env.VITE_API_URL;
+
+        // if its a "Add Warehouse" form
+
         if (addWarehouse) {
           const { data } = await axios.post(
             `${API_URL}/api/warehouses/`,
             warehouseObject
           );
           if (data) {
-            alert("Succesfully added a new warehouse!");
+            alert(`Succesfully added ${data.warehouse_name}`);
             navigate("/");
           }
+
+          // otherwise a "Edit Warehouse" form
         } else {
           const { data } = await axios.put(
             `${API_URL}/api/warehouses/${id}`,
             warehouseObject
           );
           if (data) {
-            alert(`Succesfully added updated ${data.warehouse_name}`);
+            alert(`Succesfully updated ${data.warehouse_name}`);
             navigate(`/warehouses/${id}`);
           }
         }
@@ -95,7 +127,8 @@ function WarehouseFormPage() {
         console.error("Failed to update/add the warehouse:", e);
       }
     };
-    updateOrAddWarehouse();
+
+    updateOrAddWarehouseToApi();
   };
 
   const handleChange = (e, inputName) => {
@@ -108,6 +141,7 @@ function WarehouseFormPage() {
     checkErrors(inputName, value);
   };
 
+  // check errors by field/inputName and value
   const checkErrors = (inputName, value) => {
     let errorText = "";
     switch (inputName) {
