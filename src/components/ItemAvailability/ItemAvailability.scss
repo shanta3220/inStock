@@ -119,5 +119,9 @@
       height: 38px;
     }
     }
+
+    &__error-border{
+      border: 2px solid red; /* Highlight the field with red border */
+    }
   }
   

@@ -1,6 +1,30 @@
 import "./ItemDetails.scss";
+import { useState,useEffect } from "react";
+import axios from "axios";
 
 const ItemDetails = ({ formState, onChange }) => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const API_URL = import.meta.env.VITE_API_URL;
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/api/inventories`); 
+        const inventoryData = response.data;
+
+        const uniqueCategories = [
+          ...new Set(inventoryData.map((item) => item.category)),
+        ];
+        console.log(uniqueCategories)
+        setCategories(uniqueCategories);
+      } catch (error) {
+        console.error("Error fetching inventory data:", error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
   return (
     <div className="item-details">
       <h2 className="item-details__header">Item details</h2>
@@ -24,7 +48,7 @@ const ItemDetails = ({ formState, onChange }) => {
         className="item-details__textarea"
         id="description"
         name="description"
-        placeholder="Enter description"
+        placeholder="Description"
         value={formState.description || ""}
         onChange={onChange}
       />
@@ -33,21 +57,26 @@ const ItemDetails = ({ formState, onChange }) => {
         Category
       </label>
       <select
-        className="item-details__select"
         id="category"
         name="category"
         value={formState.category || ""}
         onChange={onChange}
+        className="item-details__select"
       >
         <option value="" disabled>
           Select an option
         </option>
-        <option value="Electronics">Electronics</option>
-        <option value="Gear">Gear</option>
-        <option value="Apparel">Apparel</option>
-        <option value="Accessories">Accessories</option>
-        <option value="Health">Health</option>
-        <option value="Other">Other</option>
+        {categories.length > 0 ? (
+          categories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))
+        ) : (
+          <option value="" disabled>
+            Loading categories...
+          </option>
+        )}
       </select>
     </div>
   );
