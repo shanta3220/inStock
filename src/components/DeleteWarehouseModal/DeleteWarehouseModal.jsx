@@ -16,7 +16,7 @@ function DeleteWarehouseModal({
   // double check the port
   const API_URL = import.meta.env.VITE_API_URL;
 
-  const URLwarehouseModal = `${API_URL}/warehouse/${id}`;
+  const URLwarehouseModal = `${API_URL}/api/warehouses/${id}`;
   const deleteWarehouse = () => {
     axios
       .delete(URLwarehouseModal)
