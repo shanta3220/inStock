@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Card from "../../components/Card/Card";
+import errorIcon from "../../assets/Icons/error-24px.svg";
+import WarehouseFormInput from "../../components/WarehouseForumInput/WarehouseFormInput";
 
 function WarehouseFormPage() {
   const nameField = "name";
@@ -194,121 +196,72 @@ function WarehouseFormPage() {
         returnPath={id ? `/warehouses/${id}` : "/"}
       >
         <form className="warehouse-form" onSubmit={handleSubmit}>
-          {Object.keys(errorMessages).some((key) => errorMessages[key]) && (
-            <ul className="warehouse-form__error-list">
-              {Object.keys(errorMessages).map((key) => {
-                const errorItem = errorMessages[key];
-                return errorItem && <li key={key}>{errorItem}</li>;
-              })}
-            </ul>
-          )}
-
           <div className="warehouse-form__contents">
             <div className="warehouse-form__category-contents">
               <h2 className="warehouse-form__category-title">
                 Warehouse Details
               </h2>
-              <label className="warehouse-form__label">
-                Warehouse Name
-                <input
-                  type="text"
-                  name={nameField}
-                  value={formData[nameField]}
-                  placeholder="Warehouse Name"
-                  className="warehouse-form__input-field"
-                  onChange={(e) => handleChange(e, nameField)}
-                  required
-                />
-              </label>
-              <label className="warehouse-form__label">
-                Street Address
-                <input
-                  type="text"
-                  name={addressField}
-                  value={formData[addressField]}
-                  placeholder="Street Address"
-                  className="warehouse-form__input-field"
-                  onChange={(e) => handleChange(e, addressField)}
-                  required
-                />
-              </label>
-              <label className="warehouse-form__label">
-                City
-                <input
-                  type="text"
-                  name={cityField}
-                  value={formData[cityField]}
-                  placeholder="City"
-                  className="warehouse-form__input-field"
-                  onChange={(e) => handleChange(e, cityField)}
-                  required
-                />
-              </label>
-              <label className="warehouse-form__label">
-                Country
-                <input
-                  type="text"
-                  name={countryField}
-                  value={formData[countryField]}
-                  placeholder="Country"
-                  className="warehouse-form__input-field"
-                  onChange={(e) => handleChange(e, countryField)}
-                  required
-                />
-              </label>
+              <WarehouseFormInput
+                label="Warehouse Name"
+                field={nameField}
+                value={formData[nameField]}
+                errorMessage={errorMessages[nameField]}
+                handleChange={handleChange}
+              />
+              <WarehouseFormInput
+                label="Street Address"
+                field={addressField}
+                value={formData[addressField]}
+                errorMessage={errorMessages[addressField]}
+                handleChange={handleChange}
+              />
+              <WarehouseFormInput
+                label="City"
+                field={cityField}
+                value={formData[cityField]}
+                errorMessage={errorMessages[cityField]}
+                handleChange={handleChange}
+              />
+              <WarehouseFormInput
+                label="Country"
+                field={countryField}
+                value={formData[countryField]}
+                errorMessage={errorMessages[countryField]}
+                handleChange={handleChange}
+              />
             </div>
             <div className="warehouse-form__category-contents">
               <h2 className="warehouse-form__category-title">
                 Contact Details
               </h2>
-              <label className="warehouse-form__label">
-                Contact Name
-                <input
-                  type="text"
-                  name={contactField}
-                  value={formData[contactField]}
-                  placeholder="Contact Name"
-                  className="warehouse-form__input-field"
-                  onChange={(e) => handleChange(e, contactField)}
-                  required
-                />
-              </label>
-              <label className="warehouse-form__label">
-                Position
-                <input
-                  type="text"
-                  name={positionField}
-                  value={formData[positionField]}
-                  placeholder="Position"
-                  className="warehouse-form__input-field"
-                  onChange={(e) => handleChange(e, positionField)}
-                  required
-                />
-              </label>
-              <label className="warehouse-form__label">
-                Phone Number
-                <input
-                  type="text"
-                  name={phoneField}
-                  value={formData[phoneField]}
-                  placeholder="Phone Number"
-                  className="warehouse-form__input-field"
-                  onChange={(e) => handleChange(e, phoneField)}
-                  required
-                />
-              </label>
-              <label className="warehouse-form__label">
-                Email
-                <input
-                  type="text"
-                  name={emailField}
-                  value={formData[emailField]}
-                  placeholder="Email"
-                  className="warehouse-form__input-field"
-                  onChange={(e) => handleChange(e, emailField)}
-                  required
-                />
-              </label>
+              <WarehouseFormInput
+                label="Contact Name"
+                field={contactField}
+                value={formData[contactField]}
+                errorMessage={errorMessages[contactField]}
+                handleChange={handleChange}
+              />
+              <WarehouseFormInput
+                label="Position"
+                field={positionField}
+                value={formData[positionField]}
+                errorMessage={errorMessages[positionField]}
+                handleChange={handleChange}
+              />
+              <WarehouseFormInput
+                label="Phone Number"
+                field={phoneField}
+                value={formData[phoneField]}
+                errorMessage={errorMessages[phoneField]}
+                handleChange={handleChange}
+              />
+              <WarehouseFormInput
+                label="Email"
+                field={emailField}
+                value={formData[emailField]}
+                errorMessage={errorMessages[emailField]}
+                handleChange={handleChange}
+              />
             </div>
           </div>
           <div className="warehouse-form__buttons">

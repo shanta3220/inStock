@@ -13,30 +13,6 @@
     align-items: flex-end;
   }
 
-  &__error-list {
-    border-top: 1px solid $secondary-color-2;
-    color: $supporting-color-2;
-    width: 100%;
-    border-radius: 0.25rem;
-    padding: 1rem 3rem 1rem;
-    margin-bottom: -1.5rem;
-    @include h3-font-mob;
-    line-height: 2rem;
-
-    @include tablet {
-      margin: auto;
-      width: inherit;
-      padding-left: 2rem;
-      border: 1px solid $supporting-color-2;
-      @include h3-font-tab;
-      line-height: 1.5rem;
-    }
-
-    li {
-      list-style-type: circle;
-    }
-  }
-
   &__contents {
     display: flex;
     flex-direction: column;
@@ -88,13 +64,60 @@
     @include h4-font-mob;
 
     width: 100%;
-    border: 1px solid $secondary-color-2;
+    outline: 1px solid $secondary-color-2;
+    border: none;
     border-radius: 1.25rem;
     height: 2.25rem;
     padding: 0 1rem;
 
     @include tablet {
       height: 2.375rem;
+      @include h4-font-tab;
+    }
+
+    &:focus {
+      outline: 2px solid $primary-color-2;
+    }
+
+    &::placeholder {
+      @include h4-font-mob;
+      color: $secondary-color-1;
+
+      @include tablet {
+        @include h4-font-tab;
+      }
+    }
+
+    &:-webkit-autofill {
+      -webkit-background-clip: text;
+    }
+  }
+
+  &__input-field--invalid {
+    outline: 1px solid $supporting-color-2;
+    &:focus {
+      outline: 1px solid $supporting-color-2;
+    }
+  }
+
+  &__error-field-message {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: $supporting-color-2;
+    gap: 4px;
+    margin-bottom: -1rem;
+
+    @include h4-font-mob;
+
+    font-weight: 400;
+    img {
+      height: 1rem;
+      width: 1rem;
+    }
+
+    @include tablet {
+      margin-bottom: -1.125rem;
       @include h4-font-tab;
     }
   }
@@ -114,7 +137,6 @@
   }
 
   &__button {
-    @include h3-font-mob;
     background-color: $primary-color-2;
     color: $primary-color-3;
 
