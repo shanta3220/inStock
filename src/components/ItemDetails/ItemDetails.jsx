@@ -1,34 +1,52 @@
 import "./ItemDetails.scss";
 
-const ItemDetails = () => {
+const ItemDetails = ({ formState, onChange }) => {
   return (
     <div className="item-details">
       <h2 className="item-details__header">Item details</h2>
-      <label id="name" name="name" className="item-details__label">
+
+      <label htmlFor="item_name" className="item-details__label">
         Item Name
       </label>
       <input
-        id="name"
-        name="name"
-        placeholder="Television"
+        id="item_name"
+        name="item_name" 
+        placeholder="Enter item name"
+        value={formState.item_name || ""} 
         className="item-details__input"
+        onChange={onChange}
       />
-      {/* update the placeholder with the item name clicked */}
-      <label id="details" name="details" className="item-details__label">
+
+      <label htmlFor="description" className="item-details__label">
         Description
       </label>
       <textarea
         className="item-details__textarea"
-        id="details"
-        name="details"
-        placeholder='This 50", 4K LED TV provides a crystal-clear picture and vivid colors.'
+        id="description"
+        name="description" 
+        placeholder="Enter description"
+        value={formState.description || ""} 
+        onChange={onChange}
       />
-      {/* update the placeholder with the item description */}
-      <label className="item-details__label">Category</label>
-      <select className="item-details__select">
+
+      <label htmlFor="category" id="category" className="item-details__label">
+        Category
+      </label>
+      <select
+        className="item-details__select"
+        name="category"
+        value={formState.category || ""}
+        onChange={onChange}
+      >
         <option value="" disabled>
           Select an option
         </option>
+        <option value="Electronics">Electronics</option>
+        <option value="Gear">Gear</option>
+        <option value="Apparel">Apparel</option>
+        <option value="Accessories">Accessories</option>
+        <option value="Health">Health</option>
+        <option value="Other">Other</option>
       </select>
     </div>
   );
