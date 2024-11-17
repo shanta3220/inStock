@@ -5,13 +5,13 @@
 .inventory-info {
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid $secondary-color-2;
+  border-bottom: 0.0625rem solid $secondary-color-2;
 
   &__top {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    border-bottom: 1px solid $secondary-color-2;
+    border-bottom: 0.0625rem solid $secondary-color-2;
     padding: 1rem 2rem;
     align-items: center;
 
@@ -121,7 +121,7 @@
     @include tablet {
       padding-right: 2.8rem;
       margin: 1rem 1.5rem 2rem 2rem;
-      border-right: 1px solid $secondary-color-2;
+      border-right: 0.0625rem solid $secondary-color-2;
     }
 
     @include desktop {
@@ -153,7 +153,7 @@
       width: 5.75rem;
       color: $supporting-color-2;
       background-color: $supporting-background-color-2;
-      border-radius: 20px;
+      border-radius: 1.25rem;
       margin: 0.5rem 0 0.75rem 0;
     }
     &-green {
@@ -181,7 +181,7 @@
     }
 
     @include desktop {
-      margin-left: 150px;
+      margin-left: 9.375rem;
     }
   }
 

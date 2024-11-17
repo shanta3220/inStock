@@ -1,45 +1,45 @@
 @use "../../styles/partials/variables.scss" as *;
 @use "../../styles/partials/mixins.scss" as *;
 
-.buttons{
-    background-color: rgba(247, 248, 249, 0.7);
-    padding : 24px 40px 24px 40px;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-    box-shadow: 0px 2px 0px 0px rgba(19, 24, 44, 0.1);
-    display: flex;
-    width: 100%;
-    gap: 24px;
+.buttons {
+  background-color: rgba(247, 248, 249, 0.7);
+  padding: 1.5rem 2.5rem 1.5rem 2.5rem;
+  border-bottom-right-radius: 0.1875rem;
+  border-bottom-left-radius: 0.1875rem;
+  box-shadow: 0rem 0.125rem 0rem 0rem rgba(19, 24, 44, 0.1);
+  display: flex;
+  width: 100%;
+  gap: 1.5rem;
 
-    @include tablet{
-        justify-content: flex-end;
-        gap: 12px;
-    }
+  @include tablet {
+    justify-content: flex-end;
+    gap: 0.75rem;
+  }
 
-    &__button{
+  &__button {
     background-color: $primary-color-3;
     width: 100%;
-    border: 1px solid $secondary-color-2;
+    border: 0.0625rem solid $secondary-color-2;
     color: $secondary-color-1;
     @include h3-font-mob;
     font-family: "Titillium";
-    border-radius: 1.5625rem;   
+    border-radius: 1.5625rem;
     cursor: pointer;
-    height: 2.25rem;   
+    height: 2.25rem;
 
-    &--save{
-        background-color: $primary-color-2;
-        color: $primary-color-3;
-        border: none;
-    }
-
-    &:hover{
-        border-color: $primary-color-1;
+    &--save {
+      background-color: $primary-color-2;
+      color: $primary-color-3;
+      border: none;
     }
 
-    @include tablet{
-        width: 10%;
-        @include h3-font-tab;
+    &:hover {
+      border-color: $primary-color-1;
     }
+
+    @include tablet {
+      width: 10%;
+      @include h3-font-tab;
     }
+  }
 }

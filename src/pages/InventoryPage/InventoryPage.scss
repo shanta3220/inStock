@@ -118,7 +118,7 @@
 .inventoriesPage__row {
   display: flex;
   flex-direction: row;
-  border-top: 1px solid $secondary-color-2;
+  border-top: 0.0625rem solid $secondary-color-2;
   padding: 1.25rem 2rem 1.25rem;
   flex-wrap: wrap;
 
@@ -126,7 +126,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 0.5fr 0.5fr;
     font-weight: bold;
-    border-bottom: 1px solid $secondary-color-2;
+    border-bottom: 0.0625rem solid $secondary-color-2;
     border-top: 0;
     padding: 0 2rem 1.25rem;
     margin-bottom: 0;
