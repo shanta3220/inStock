@@ -1,3 +1,4 @@
+import "./AddUpdateWarehousePage.scss";
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Card from "../../components/Card/Card";
@@ -39,7 +40,7 @@ function AddUpdateWarehousePage() {
         returnPath={id ? `/warehouses/${id}` : "/"}
       >
         <form className="warehouse-form" onSubmit={handleSubmit}>
-          <div className="warehouse-form__category">
+          <div className="warehouse-form__category-contents">
             <h2 className="warehouse-form__category-title">
               Warehouse Details
             </h2>
@@ -92,7 +93,7 @@ function AddUpdateWarehousePage() {
               />
             </label>
           </div>
-          <div className="warehouse-form__category">
+          <div className="warehouse-form__category-contents">
             <h2 className="warehouse-form__category-title">Contact Details</h2>
             <label className="warehouse-form__label">
               Contact Name
@@ -144,16 +145,17 @@ function AddUpdateWarehousePage() {
             </label>
           </div>
           <div className="warehouse-form__buttons">
-            <button type="submit">
-              {addWarehouse ? "+ Add Warehouse" : "Save"}
-            </button>
             <button
+              className="warehouse-form__button--cancel"
               type="button"
               onClick={() => {
                 navigate(`/warehouses/${id}`);
               }}
             >
               Cancel
+            </button>
+            <button type="submit" className="warehouse-form__button">
+              {addWarehouse ? "+ Add Warehouse" : "Save"}
             </button>
           </div>
         </form>
