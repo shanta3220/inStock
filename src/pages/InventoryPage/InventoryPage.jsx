@@ -5,7 +5,6 @@ function InventoryPage() {
   return (
     <div>
       Inventory Page
-      <AddNewInventoryPage/>
     </div>
   )
 }

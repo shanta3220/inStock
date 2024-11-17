@@ -17,7 +17,7 @@
   
     &__title {
       @include h2-font-mob;
-      padding-bottom: 40px;
+      padding-bottom: 16px;
 
       @include tablet{
         @include h2-font-tab;
@@ -26,6 +26,7 @@
   
     &__section {
       margin-bottom: 24px;
+      margin-top: 24px;
     }
   
     &__label {
@@ -109,7 +110,7 @@
     border-radius: 20px;
     border: 1px $secondary-color-2 solid;
     width: 30%;
-    margin-bottom: 24px;
+    
     &:focus {
       border: 1px solid $primary-color-2;
       outline: none;
@@ -120,8 +121,22 @@
     }
     }
 
-    &__error-border{
-      border: 2px solid red; /* Highlight the field with red border */
+    &__input-error {
+      border: 1px solid $supporting-color-2;
+      transition: border-color 0.3s, background-color 0.3s;
+    }
+    &__error-message{
+      display: flex;
+      align-items: center;
+    }
+  
+    &__error-img{
+      height: 1rem;
+    }
+  
+    &__error-text{
+      @include h4-font-mob;
+        padding-left: 4px;
     }
   }
   
