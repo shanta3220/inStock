@@ -110,7 +110,7 @@
     padding-left: 0rem;
 
     @include tablet {
-      flex-direction: column;
+      flex-direction: row;
     }
   }
 
@@ -221,7 +221,8 @@
       align-items: center;
       background-position: 0.5rem 0.4rem;
       background-size: 1.2rem;
-      max-width: 4.5rem;
+      width: 5.0625rem;
+      height: 2.375rem;
     }
   }
 
