@@ -74,7 +74,7 @@ function InventoryList({
             onSort={() => handleSort("warehouse_name")}
           />
         )}
-        <HeaderCell label="Actions" align="right" />
+        <HeaderCell label="ACTIONS" align="right" />
       </div>
 
       {/* Data rows */}
