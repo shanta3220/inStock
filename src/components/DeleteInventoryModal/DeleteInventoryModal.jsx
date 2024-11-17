@@ -16,7 +16,7 @@ function DeleteInventoryModal({
   // double check the port
   const API_URL = import.meta.env.VITE_API_URL;
 
-  const URLinventoryModal = `${API_URL}/inventories/${id}`;
+  const URLinventoryModal = `${API_URL}/api/inventories/${id}`;
   const deleteInventory = () => {
     axios
       .delete(URLinventoryModal)

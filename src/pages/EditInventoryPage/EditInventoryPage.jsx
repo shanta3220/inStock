@@ -74,7 +74,10 @@ function EditInventoryPage() {
 
     try {
       const API_URL = import.meta.env.VITE_API_URL;
-      const response = await axios.put(`${API_URL}/api/inventories/${id}`, updatedInventory);
+      const response = await axios.put(
+        `${API_URL}/api/inventories/${id}`,
+        updatedInventory
+      );
       navigate("/inventory"); // Navigate to inventory after successful update
     } catch (error) {
       console.error("Error updating inventory item:", error);
@@ -84,11 +87,15 @@ function EditInventoryPage() {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <Card title="Edit Inventory Item" returnPath="/inventory">
+    <Card title="Edit Inventory Item" returnPath="/inventories">
       <form onSubmit={handleSubmit}>
         <div className="form-fields">
           {/* Pass the submitted state to both components */}
-          <ItemDetails formState={formState} onChange={handleInputChange} submitted={submitted} />
+          <ItemDetails
+            formState={formState}
+            onChange={handleInputChange}
+            submitted={submitted}
+          />
           <ItemAvailability
             formState={formState}
             onChange={handleInputChange}

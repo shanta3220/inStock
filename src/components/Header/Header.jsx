@@ -26,7 +26,16 @@ function Header() {
         >
           Warehouse
         </NavLink>
-        <NavLink className="header__nav--item" to={`/inventory`}>
+        <NavLink
+          className={({ isActive }) =>
+            `header__nav--item ${
+              window.location.pathname.includes("/inventories") || isActive
+                ? "active"
+                : ""
+            }`
+          }
+          to={`/inventories`}
+        >
           Inventory
         </NavLink>
       </div>

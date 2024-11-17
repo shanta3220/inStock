@@ -14,7 +14,7 @@ function InventoryPage() {
   const [inventories, setInventories] = useState([]);
 
   const handleAddNewInventoryClick = () => {
-    navigate('/add-inventory'); // Navigate to the Add New Inventory page
+    navigate("/inventories/add"); // Navigate to the Add New Inventory page
   };
 
   useEffect(() => {
@@ -48,9 +48,12 @@ function InventoryPage() {
                 />
               </button>
             </div>
-              <button className="option__add-button" onClick={handleAddNewInventoryClick}>
-                + Add New Inventory
-              </button>
+            <button
+              className="option__add-button"
+              onClick={handleAddNewInventoryClick}
+            >
+              + Add New Inventory
+            </button>
           </div>
         }
       >

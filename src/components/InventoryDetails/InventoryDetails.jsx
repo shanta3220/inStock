@@ -6,7 +6,7 @@ import "./InventoryDetails.scss";
 function InventoryDetails({ inventory, warehouse }) {
   const navEdit = useNavigate();
   const handleEditClick = () => {
-    navEdit(`/inventory/edit/${inventory}`);
+    navEdit(`/inventories/${inventory.id}/edit`);
   };
 
   let statusColor = "";
