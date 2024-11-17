@@ -63,7 +63,7 @@ function InventoryDetailsPage() {
   }
 
   return (
-    <Card title={inventoryItem.inventory_name} returnPath="/inventory">
+    <Card title={inventoryItem.inventory_name} returnPath="/inventories">
       <InventoryDetails inventory={inventoryItem} warehouse={warehouse} />
 
       <InventoryList
