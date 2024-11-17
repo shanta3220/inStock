@@ -22,6 +22,7 @@ function EditInventoryPage() {
     quantity: state?.quantity || 0,
   });
   const [loading, setLoading] = useState(true);
+  const [submitted, setSubmitted] = useState(false); // Track if form is submitted
 
   useEffect(() => {
     const API_URL = import.meta.env.VITE_API_URL;
@@ -50,8 +51,6 @@ function EditInventoryPage() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    console.log(`${name} selected: ${value}`);
-
     setFormState((prev) => ({
       ...prev,
       [name]: value,
@@ -60,20 +59,22 @@ function EditInventoryPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-// Check if warehouse is selected
-  if (!formState.warehouse_id || !formState.warehouse_name) {
-    alert("Please select a warehouse.");
-    return;
-  }
+    setSubmitted(true); // Set form to "submitted" state
 
-  const updatedInventory = {
-    ...formState, 
-    warehouse_id: formState.warehouse_id, // Ensure warehouse_id is included in the request
-  };
+    // Validation check for required fields
+    if (!formState.warehouse_id || !formState.warehouse_name) {
+      alert("Please select a warehouse.");
+      return;
+    }
+
+    const updatedInventory = {
+      ...formState,
+      warehouse_id: formState.warehouse_id, // Ensure warehouse_id is included in the request
+    };
 
     try {
       const API_URL = import.meta.env.VITE_API_URL;
-      const response = await axios.put(`${API_URL}/api/inventories/${id}`, formState);
+      const response = await axios.put(`${API_URL}/api/inventories/${id}`, updatedInventory);
       navigate("/inventory"); // Navigate to inventory after successful update
     } catch (error) {
       console.error("Error updating inventory item:", error);
@@ -86,11 +87,13 @@ function EditInventoryPage() {
     <Card title="Edit Inventory Item" returnPath="/inventory">
       <form onSubmit={handleSubmit}>
         <div className="form-fields">
-          <ItemDetails formState={formState} onChange={handleInputChange} />
+          {/* Pass the submitted state to both components */}
+          <ItemDetails formState={formState} onChange={handleInputChange} submitted={submitted} />
           <ItemAvailability
             formState={formState}
             onChange={handleInputChange}
             status={formState.status.toLowerCase().replace(/\s+/g, "-")}
+            submitted={submitted} // Pass it to trigger error state
           />
         </div>
         <CancelSaveButtons />

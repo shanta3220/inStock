@@ -20,7 +20,7 @@
 
   &__header {
     @include h2-font-mob;
-    padding-bottom: 40px;
+    padding-bottom: 16px;
 
     @include tablet{
       @include h2-font-tab;
@@ -31,6 +31,7 @@
     @include h3-font-mob;
     font-family: "Titillium";
     padding-bottom: 4px;
+    margin-top: 24px;
 
     @include tablet{
       @include h3-font-tab;
@@ -43,7 +44,6 @@
     border-radius: 20px;
     border: 1px $secondary-color-2 solid;
     width: 100%;
-    margin-bottom: 24px;
     &:focus {
       border: 1px solid $primary-color-2;
       outline: none;
@@ -59,7 +59,7 @@
     border-radius: 20px;
     border: 1px $secondary-color-2 solid;
     width: 100%;
-    margin-bottom: 24px;
+    // margin-bottom: 24px;
     padding-top: 8px;
     height: 120px;
     &:focus {
@@ -102,5 +102,24 @@
           border-color: #007bff;
           box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
         }
+  }
+
+  &__input-error {
+    border: 1px solid $supporting-color-2;
+    transition: border-color 0.3s, background-color 0.3s;
+  }
+
+  &__error-message{
+    display: flex;
+    align-items: center;
+  }
+
+  &__error-img{
+    height: 1rem;
+  }
+
+  &__error-text{
+    @include h4-font-mob;
+      padding-left: 4px;
   }
 }
