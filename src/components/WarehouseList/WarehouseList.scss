@@ -23,7 +23,7 @@
 
     @include desktop {
       grid-template-columns: 1fr 1.5fr 1fr 1fr 0.5fr;
-      padding: 0.5rem 2rem;
+      padding: 0.5rem 2.5rem;
     }
   }
 
@@ -49,6 +49,7 @@
     }
 
     @include desktop {
+      padding: 0 2.5rem 1.25rem;
       grid-template-columns: 1fr 1.5fr 1fr 1fr 0.5fr;
     }
   }
