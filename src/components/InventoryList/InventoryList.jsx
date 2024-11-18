@@ -150,7 +150,7 @@ function InventoryList({
               />
               <Link
                 to={{
-                  pathname: `/inventory/${inventory.id}`, // Dynamically build the edit page URL
+                  pathname: `/inventories/${inventory.id}/edit`, // Dynamically build the edit page URL
                 }}
                 state={{
                   inventoryId: inventory.id,

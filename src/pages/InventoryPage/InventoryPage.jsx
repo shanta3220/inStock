@@ -12,6 +12,10 @@ import { Link } from "react-router-dom";
 function InventoryPage() {
   const [inventories, setInventories] = useState([]);
 
+  const handleAddNewInventoryClick = () => {
+    navigate("/inventories/add"); // Navigate to the Add New Inventory page
+  };
+
   useEffect(() => {
     const API_URL = import.meta.env.VITE_API_URL;
     axios
@@ -43,11 +47,12 @@ function InventoryPage() {
                 />
               </button>
             </div>
-            <Link to="/add-inventory">
-              <button className="option__add-button">
-                + Add New Inventory
-              </button>
-            </Link>
+            <button
+              className="option__add-button"
+              onClick={handleAddNewInventoryClick}
+            >
+              + Add New Inventory
+            </button>
           </div>
         }
       >

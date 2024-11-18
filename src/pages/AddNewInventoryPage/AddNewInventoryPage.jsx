@@ -1,15 +1,16 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ItemDetails from "../../components/ItemDetails/ItemDetails";
 import ItemAvailability from "../../components/ItemAvailability/ItemAvailability";
 import Card from "../../components/Card/Card";
 import CancelSaveButtons from "../../components/CancelSaveButtons/CancelSaveButtons";
 import axios from "axios";
-import './AddNewInventoryPage.scss'
+import "./AddNewInventoryPage.scss";
 
 const AddNewInventoryPage = () => {
-
-    const [formState, setFormState] = useState({
-    warehouse_id: 1, // Default warehouse ID 
+  const navigate = useNavigate();
+  const [formState, setFormState] = useState({
+    warehouse_id: 1, // Default warehouse ID
     item_name: "",
     description: "",
     category: "",
@@ -35,7 +36,12 @@ const AddNewInventoryPage = () => {
     setSubmitted(true); // Trigger validation on submit
 
     // Basic validation
-    if (!formState.item_name || !formState.description || !formState.category || formState.quantity <= 0) {
+    if (
+      !formState.item_name ||
+      !formState.description ||
+      !formState.category ||
+      formState.quantity <= 0
+    ) {
       alert("Please fill in all fields.");
       return;
     }
@@ -43,7 +49,10 @@ const AddNewInventoryPage = () => {
     const API_URL = import.meta.env.VITE_API_URL;
 
     try {
-      const response = await axios.post(`${API_URL}/api/inventories`, formState);
+      const response = await axios.post(
+        `${API_URL}/api/inventories`,
+        formState
+      );
       console.log("Inventory item added:", response.data);
 
       // Reset form after successful submission
@@ -57,18 +66,26 @@ const AddNewInventoryPage = () => {
       });
       setSubmitted(false); // Reset the submitted state
 
-      navigate("/inventory"); 
+      navigate("/inventories");
     } catch (error) {
       console.error("Error adding inventory item:", error);
     }
   };
 
   return (
-    <Card title="Add New Inventory Item" returnPath="/inventory">
+    <Card title="Add New Inventory Item" returnPath="/inventories">
       <form onSubmit={handleSubmit}>
-      <div className="form-fields">
-        <ItemDetails formState={formState} onChange={handleFormChange} submitted={submitted} />
-        <ItemAvailability formState={formState} onChange={handleFormChange} submitted={submitted} />
+        <div className="form-fields">
+          <ItemDetails
+            formState={formState}
+            onChange={handleFormChange}
+            submitted={submitted}
+          />
+          <ItemAvailability
+            formState={formState}
+            onChange={handleFormChange}
+            submitted={submitted}
+          />
         </div>
         <CancelSaveButtons />
       </form>
