@@ -38,7 +38,7 @@
 
   &__row {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     border-top: 0.0625rem solid $secondary-color-2;
     padding: 1.25rem 2rem 1.25rem;
     flex-wrap: wrap;
@@ -64,6 +64,7 @@
 
     &--detail {
       @include tablet {
+        margin-right: 0;
         grid-template-columns: 1fr 1fr 1fr 1fr 0.5fr;
       }
       @include desktop {
@@ -81,6 +82,7 @@
 
     @include tablet {
       display: flex;
+      min-width: 6.25rem;
       width: 100%;
       margin-bottom: 0;
       align-self: center;
@@ -221,40 +223,43 @@
     cursor: pointer;
   }
 
-  .inventory-table__row {
-    .inventory-table__cell-pair:nth-child(2) {
-      order: 2;
-    }
+  // &__row {
+  //   .inventory-table__cell-pair:nth-child(3) {
+  //     order: -5;
+  //   }
+  //   .inventory-table__cell-pair:nth-child(1) {
+  //     order: -4;
+  //   }
+  //   .inventory-table__cell-pair:nth-child(4) {
+  //     order: -3;
+  //   }
+  //   .inventory-table__cell-pair:nth-child(2) {
+  //     order: -2;
+  //   }
+  //   .inventory-table__cell-pair:nth-child(5) {
+  //     order: -1;
+  //   }
 
-    .inventory-table__cell-pair:nth-child(5) {
-      order: 1;
-    }
+  //   @include tablet {
+  //     .inventory-table__cell-pair:nth-child(1) {
+  //       order: 1;
+  //     }
+  //     .inventory-table__cell-pair:nth-child(2) {
+  //       order: 2;
+  //     }
+  //     .inventory-table__cell-pair:nth-child(3) {
+  //       order: 3;
+  //     }
+  //     .inventory-table__cell-pair:nth-child(4) {
+  //       order: 4;
+  //     }
+  //     .inventory-table__cell-pair:nth-child(5) {
+  //       order: 5;
+  //     }
+  //   }
+  // }
 
-    .inventory-table__cell-pair:nth-child(4) {
-      order: 3;
-    }
-
-    .inventory-table__actions {
-      order: 4;
-    }
+  .inventory-table__actions {
+    order: 5;
   }
-
-  @include tablet {
-    .inventory-table__row {
-      .inventory-table__cell-pair:nth-child(2) {
-        order: 2;
-      }
-
-      .inventory-table__cell-pair:nth-child(3) {
-        order: 3;
-      }
-
-      .inventory-table__cell-pair:nth-child(4) {
-        order: 4;
-      }
-    }
-  }
-}
-.inventoriesPage__actions {
-  display: none;
 }

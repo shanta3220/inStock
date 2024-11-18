@@ -137,7 +137,7 @@ function InventoryList({ inventories, setInventories }) {
               </div>
             )}
             {/* Action buttons */}
-            <div className="inventory-table__actions ">
+            <div className="inventory-table__actions">
               <img
                 src={deleteIcon}
                 alt="Delete Icon"
