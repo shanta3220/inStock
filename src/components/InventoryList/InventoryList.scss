@@ -22,7 +22,7 @@
     }
 
     @include desktop {
-      grid-template-columns: 1fr 1.5fr 1fr 1fr 0.5fr 0.5fr;
+      grid-template-columns: 1fr 1fr 1fr 0.6fr 0.8fr 0.5fr;
       padding: 0.5rem 2.5rem;
     }
 
@@ -59,7 +59,7 @@
 
     @include desktop {
       padding: 0 2.5rem 1.25rem;
-      grid-template-columns: 1fr 1.5fr 1fr 1fr 0.5fr 0.5fr;
+      grid-template-columns: 1fr 1fr 1fr 0.6fr 0.8fr 0.5fr;
     }
 
     &--detail {
@@ -223,41 +223,41 @@
     cursor: pointer;
   }
 
-  &__row {
-    .inventory-table__cell-pair:nth-child(3) {
-      order: -5;
-    }
-    .inventory-table__cell-pair:nth-child(1) {
-      order: -4;
-    }
-    .inventory-table__cell-pair:nth-child(4) {
-      order: -3;
-    }
-    .inventory-table__cell-pair:nth-child(2) {
-      order: -2;
-    }
-    .inventory-table__cell-pair:nth-child(5) {
-      order: -1;
-    }
+  // &__row {
+  //   .inventory-table__cell-pair:nth-child(3) {
+  //     order: -5;
+  //   }
+  //   .inventory-table__cell-pair:nth-child(1) {
+  //     order: -4;
+  //   }
+  //   .inventory-table__cell-pair:nth-child(4) {
+  //     order: -3;
+  //   }
+  //   .inventory-table__cell-pair:nth-child(2) {
+  //     order: -2;
+  //   }
+  //   .inventory-table__cell-pair:nth-child(5) {
+  //     order: -1;
+  //   }
 
-    @include tablet {
-      .inventory-table__cell-pair:nth-child(1) {
-        order: 1;
-      }
-      .inventory-table__cell-pair:nth-child(2) {
-        order: 2;
-      }
-      .inventory-table__cell-pair:nth-child(3) {
-        order: 3;
-      }
-      .inventory-table__cell-pair:nth-child(4) {
-        order: 4;
-      }
-      .inventory-table__cell-pair:nth-child(5) {
-        order: 5;
-      }
-    }
-  }
+  //   @include tablet {
+  //     .inventory-table__cell-pair:nth-child(1) {
+  //       order: 1;
+  //     }
+  //     .inventory-table__cell-pair:nth-child(2) {
+  //       order: 2;
+  //     }
+  //     .inventory-table__cell-pair:nth-child(3) {
+  //       order: 3;
+  //     }
+  //     .inventory-table__cell-pair:nth-child(4) {
+  //       order: 4;
+  //     }
+  //     .inventory-table__cell-pair:nth-child(5) {
+  //       order: 5;
+  //     }
+  //   }
+  // }
 
   .inventory-table__actions {
     order: 5;
