@@ -16,7 +16,7 @@
     align-items: center;
 
     @include tablet {
-      margin-top: -3rem;
+      padding: 0 2rem;
     }
   }
 
@@ -60,8 +60,11 @@
   }
 
   &__container {
+    padding-left: 0rem;
+
     @include tablet {
       display: flex;
+      flex-direction: row;
     }
   }
 
@@ -69,7 +72,6 @@
     font-size: 0.6875rem;
     color: $secondary-color-1;
     text-transform: uppercase;
-    margin-bottom: 0rem;
 
     @include tablet {
       font-size: 0.75rem;
@@ -79,11 +81,15 @@
   &__text {
     font-size: 0.8125rem;
     margin: 0.5rem 0;
-    max-width: 21rem;
+    width: 100%;
+    padding-bottom: 6px;
+    margin-top: 3px;
 
     @include tablet {
+      padding-bottom: 0;
       font-size: 0.875rem;
       max-width: 28rem;
+      margin-top: 2px;
     }
 
     @include desktop {
@@ -107,21 +113,13 @@
     }
   }
 
-  &__container {
-    padding-left: 0rem;
-
-    @include tablet {
-      flex-direction: row;
-    }
-  }
-
   &__description-wrapper {
     margin: 1rem 1.5rem 0rem;
-
     @include tablet {
       padding-right: 2.8rem;
       margin: 1rem 1.5rem 2rem 2rem;
       border-right: 0.0625rem solid $secondary-color-2;
+      padding-top: 4px;
     }
 
     @include desktop {
@@ -149,7 +147,7 @@
       width: 7.6rem;
     }
     &-red {
-      height: 1.5625rem;
+      height: 1.5rem;
       width: 5.75rem;
       color: $supporting-color-2;
       background-color: $supporting-background-color-2;
