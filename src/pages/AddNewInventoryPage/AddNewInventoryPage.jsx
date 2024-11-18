@@ -40,7 +40,7 @@ const AddNewInventoryPage = () => {
       !formState.item_name ||
       !formState.description ||
       !formState.category ||
-      formState.quantity <= 0
+      (formState.quantity <= 0 && formState.status === "in-stock")
     ) {
       alert("Please fill in all fields.");
       return;
@@ -48,28 +48,36 @@ const AddNewInventoryPage = () => {
 
     const API_URL = import.meta.env.VITE_API_URL;
 
-    try {
-      const response = await axios.post(
-        `${API_URL}/api/inventories`,
-        formState
-      );
-      console.log("Inventory item added:", response.data);
-
-      // Reset form after successful submission
-      setFormState({
-        warehouse_id: 1,
-        item_name: "",
-        description: "",
-        category: "",
-        status: "In Stock",
-        quantity: 0,
-      });
-      setSubmitted(false); // Reset the submitted state
-
-      navigate("/inventories");
-    } catch (error) {
-      console.error("Error adding inventory item:", error);
+    if (formState.status === "in-stock") {
+      formState.status = "In Stock";
+    } else {
+      formState.status = "Out of Stock";
+      formState.quantity = 0;
     }
+
+    if (formState)
+      try {
+        const response = await axios.post(
+          `${API_URL}/api/inventories`,
+          formState
+        );
+        console.log("Inventory item added:", response.data);
+
+        // Reset form after successful submission
+        setFormState({
+          warehouse_id: 1,
+          item_name: "",
+          description: "",
+          category: "",
+          status: "In Stock",
+          quantity: 0,
+        });
+        setSubmitted(false); // Reset the submitted state
+
+        navigate("/inventories");
+      } catch (error) {
+        console.error("Error adding inventory item:", error);
+      }
   };
 
   return (

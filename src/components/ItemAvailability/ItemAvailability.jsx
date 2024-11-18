@@ -1,18 +1,31 @@
 import { useState, useEffect } from "react";
 import "./ItemAvailability.scss";
 import axios from "axios";
-import error from '../../assets/Icons/error-24px.svg'
-
+import error from "../../assets/Icons/error-24px.svg";
 
 const ItemAvailability = ({ status, formState, onChange, submitted }) => {
   const [warehouses, setWarehouses] = useState([]);
 
   useEffect(() => {
     const API_URL = import.meta.env.VITE_API_URL;
+
     const fetchWarehouses = async () => {
       try {
         const response = await axios.get(`${API_URL}/api/warehouses`);
+        const selectedWarehouse = response.data.find(
+          (warehouse) => warehouse.warehouse_name === formState.warehouse_name
+        );
+
         setWarehouses(response.data);
+
+        if (selectedWarehouse) {
+          onChange({
+            target: {
+              name: "warehouse_id",
+              value: selectedWarehouse.id,
+            },
+          });
+        }
       } catch (error) {
         console.error("Error fetching warehouse data:", error);
       }
@@ -51,14 +64,15 @@ const ItemAvailability = ({ status, formState, onChange, submitted }) => {
   const renderErrorMessage = (fieldValue) => {
     return submitted && !fieldValue ? (
       <div className="item-availability__error-message">
-        <img 
-        className="item-availability__error-img"
-        src={error} alt='error icon'/> 
+        <img
+          className="item-availability__error-img"
+          src={error}
+          alt="error icon"
+        />
         <p className="item-availability__error-text">This field is required.</p>
       </div>
     ) : null;
   };
-
 
   return (
     <div className="item-availability">
@@ -87,7 +101,10 @@ const ItemAvailability = ({ status, formState, onChange, submitted }) => {
               In stock
             </span>
           </label>
-          <label htmlFor="status-out-of-stock" className="item-availability__radio">
+          <label
+            htmlFor="status-out-of-stock"
+            className="item-availability__radio"
+          >
             <input
               type="radio"
               id="status-out-of-stock"
@@ -116,11 +133,17 @@ const ItemAvailability = ({ status, formState, onChange, submitted }) => {
             Quantity
           </label>
           <input
-            className={`item-availability__quantity-input ${getErrorClass(formState.quantity)}`}
+            className={`item-availability__quantity-input ${getErrorClass(
+              formState.quantity
+            )}`}
             id="quantity"
             type="number"
             name="quantity"
-            value={formState.quantity !== undefined && formState.quantity !== null ? formState.quantity : ""}
+            value={
+              formState.quantity !== undefined && formState.quantity !== null
+                ? formState.quantity
+                : ""
+            }
             onChange={onChange}
             min="0"
             placeholder="Enter quantity"
@@ -130,9 +153,13 @@ const ItemAvailability = ({ status, formState, onChange, submitted }) => {
       )}
 
       <div className="item-availability__section">
-        <label htmlFor="warehouse_name" className="item-availability__label">Warehouse</label>
+        <label htmlFor="warehouse_name" className="item-availability__label">
+          Warehouse
+        </label>
         <select
-          className={`item-availability__select ${getErrorClass(formState.warehouse_name)}`}
+          className={`item-availability__select ${getErrorClass(
+            formState.warehouse_name
+          )}`}
           id="warehouse_name"
           name="warehouse_name"
           value={formState.warehouse_name || ""}
@@ -153,7 +180,7 @@ const ItemAvailability = ({ status, formState, onChange, submitted }) => {
             </option>
           )}
         </select>
-        {renderErrorMessage(formState.warehouse)}
+        {renderErrorMessage(formState.warehouse_name)}
       </div>
     </div>
   );
