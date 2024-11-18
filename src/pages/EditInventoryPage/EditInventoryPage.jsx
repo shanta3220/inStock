@@ -14,11 +14,11 @@ function EditInventoryPage() {
 
   const [formState, setFormState] = useState({
     warehouse_id: state?.warehouse_id || "", // Only set warehouse_id from state
-    warehouse_name: state?.warehouse_name || "", // Optionally display warehouse_name, but not editable
+    warehouse_name: state?.warehouse_name || "", // Optionally display warehouse_name, 
     item_name: state?.item_name || "",
     description: state?.description || "",
     category: state?.category || "",
-    status: state?.status || "",
+    status: state?.status?.toLowerCase().replace(/\s+/g, "-") || "",
     quantity: state?.quantity || 0,
   });
   const [loading, setLoading] = useState(true);
@@ -36,6 +36,7 @@ function EditInventoryPage() {
           setFormState((prevState) => ({
             ...prevState,
             ...itemData,
+            status: itemData.status.toLowerCase().replace(/\s+/g, "-"),
           }));
           setLoading(false);
         } catch (error) {
@@ -99,8 +100,8 @@ function EditInventoryPage() {
           <ItemAvailability
             formState={formState}
             onChange={handleInputChange}
-            status={formState.status.toLowerCase().replace(/\s+/g, "-")}
-            submitted={submitted} // Pass it to trigger error state
+           // status={formState.status.toLowerCase().replace(/\s+/g, "-")}
+            submitted={submitted} 
           />
         </div>
         <CancelSaveButtons />

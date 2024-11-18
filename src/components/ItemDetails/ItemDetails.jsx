@@ -1,7 +1,7 @@
 import "./ItemDetails.scss";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import error from '../../assets/Icons/error-24px.svg'
+import error from "../../assets/Icons/error-24px.svg";
 
 const ItemDetails = ({ formState, onChange, submitted }) => {
   const [categories, setCategories] = useState([]);
@@ -31,14 +31,11 @@ const ItemDetails = ({ formState, onChange, submitted }) => {
   const renderErrorMessage = (fieldValue) => {
     return submitted && !fieldValue ? (
       <div className="item-details__error-message">
-        <img 
-        className="item-details__error-img"
-        src={error} alt='error icon'/> 
+        <img className="item-details__error-img" src={error} alt="error icon" />
         <p className="item-details__error-text">This field is required.</p>
       </div>
     ) : null;
   };
-
 
   return (
     <div className="item-details">
@@ -55,20 +52,22 @@ const ItemDetails = ({ formState, onChange, submitted }) => {
         className={`item-details__input ${getErrorClass(formState.item_name)}`}
         onChange={onChange}
       />
-{renderErrorMessage(formState.item_name)}
+      {renderErrorMessage(formState.item_name)}
 
       <label htmlFor="description" className="item-details__label">
         Description
       </label>
       <textarea
-        className={`item-details__textarea ${getErrorClass(formState.description)}`}
+        className={`item-details__textarea ${getErrorClass(
+          formState.description
+        )}`}
         id="description"
         name="description"
         placeholder="Description"
         value={formState.description || ""}
         onChange={onChange}
       />
-{renderErrorMessage(formState.description)}
+      {renderErrorMessage(formState.description)}
 
       <label htmlFor="category" className="item-details__label">
         Category
