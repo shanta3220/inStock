@@ -14,7 +14,7 @@ function EditInventoryPage() {
 
   const [formState, setFormState] = useState({
     warehouse_id: state?.warehouse_id || "", // Only set warehouse_id from state
-    warehouse_name: state?.warehouse_name || "", // Optionally display warehouse_name, 
+    warehouse_name: state?.warehouse_name || "", // Optionally display warehouse_name,
     item_name: state?.item_name || "",
     description: state?.description || "",
     category: state?.category || "",
@@ -28,7 +28,7 @@ function EditInventoryPage() {
     const API_URL = import.meta.env.VITE_API_URL;
 
     // Fetch item data only if not provided by state
-    if (id && !state) {
+    if (id && (!state || !state.warehouse_name)) {
       const fetchItemData = async () => {
         try {
           const response = await axios.get(`${API_URL}/api/inventories/${id}`);
@@ -68,6 +68,13 @@ function EditInventoryPage() {
       return;
     }
 
+    if (formState.status === "in-stock") {
+      formState.status = "In Stock";
+    } else {
+      formState.status = "Out of Stock";
+      formState.quantity = 0;
+    }
+
     const updatedInventory = {
       ...formState,
       warehouse_id: formState.warehouse_id, // Ensure warehouse_id is included in the request
@@ -100,8 +107,8 @@ function EditInventoryPage() {
           <ItemAvailability
             formState={formState}
             onChange={handleInputChange}
-           // status={formState.status.toLowerCase().replace(/\s+/g, "-")}
-            submitted={submitted} 
+            // status={formState.status.toLowerCase().replace(/\s+/g, "-")}
+            submitted={submitted}
           />
         </div>
         <CancelSaveButtons />
