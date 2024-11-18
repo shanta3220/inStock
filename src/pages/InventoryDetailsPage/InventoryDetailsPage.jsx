@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./InventoryDetailsPage.scss";
 import Card from "../../components/Card/Card";
@@ -10,11 +10,12 @@ function InventoryDetailsPage() {
   const { id } = useParams();
   const [inventoryItem, setInventoryItem] = useState(null);
   const [warehouse, setWarehouse] = useState(null);
+  const navEdit = useNavigate();
 
   const API_URL = import.meta.env.VITE_API_URL;
 
-  const handleInventoryEditOnClick = (inventoryItemId) => {
-    console.log("InventoryEdit button clicked!", inventoryItemId);
+  const handleInventoryEditOnClick = () => {
+    navEdit(`/inventories/${inventoryItem.id}/edit`);
   };
 
   useEffect(() => {
@@ -63,16 +64,12 @@ function InventoryDetailsPage() {
   }
 
   return (
-    <Card title={inventoryItem.inventory_name} returnPath="/inventories">
+    <Card
+      title={inventoryItem.item_name}
+      returnPath="/inventories"
+      handleEditOnClick={handleInventoryEditOnClick}
+    >
       <InventoryDetails inventory={inventoryItem} warehouse={warehouse} />
-
-      <InventoryList
-        inventories={inventoryItem}
-        handleInventoryEditOnClick={handleInventoryEditOnClick}
-        handleInventoryDeleteOnClick={(inventoryItemId) =>
-          console.log("Delete button clicked!", inventoryItemId)
-        }
-      />
     </Card>
   );
 }

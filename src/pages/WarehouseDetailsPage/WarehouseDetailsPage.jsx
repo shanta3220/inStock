@@ -65,7 +65,7 @@ function WarehouseDetailsPage() {
       <Card
         title={warehouse.warehouse_name}
         returnPath="/"
-        handleWarehouseEditOnClick={handleWarehouseEditOnClick}
+        handleEditOnClick={handleWarehouseEditOnClick}
       >
         <WarehouseDetails warehouse={warehouse} />
         <InventoryList
