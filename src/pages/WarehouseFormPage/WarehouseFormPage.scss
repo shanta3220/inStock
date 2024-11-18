@@ -128,6 +128,8 @@
     justify-content: space-between;
     gap: 1.0625rem;
     width: 100%;
+    border-bottom-right-radius: .25rem;
+    border-bottom-left-radius: .25rem;
 
     @include tablet {
       gap: 1rem;
