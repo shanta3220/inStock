@@ -16,14 +16,6 @@ function WarehouseDetailsPage() {
     navigate(`/warehouses/${id}/edit`);
   };
 
-  const handleInventoryEditOnClick = (inventoryItemId) => {
-    console.log("InventoryEdit button clicked!", inventoryItemId);
-  };
-
-  const handleInventoryDeleteOnClick = (inventoryItemId) => {
-    console.log("delete button clicked!", inventoryItemId);
-  };
-
   useEffect(() => {
     const API_URL = import.meta.env.VITE_API_URL;
 
@@ -70,8 +62,7 @@ function WarehouseDetailsPage() {
         <WarehouseDetails warehouse={warehouse} />
         <InventoryList
           inventories={inventories}
-          handleInventoryEditOnClick={handleInventoryEditOnClick}
-          handleInventoryDeleteOnClick={handleInventoryDeleteOnClick}
+          setInventories={setInventories}
         />
       </Card>
     </>

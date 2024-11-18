@@ -10,12 +10,7 @@ import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 
-function InventoryList({
-  inventories,
-  setInventories,
-  handleInventoryEditOnClick,
-  handleInventoryDeleteOnClick,
-}) {
+function InventoryList({ inventories, setInventories }) {
   const showAllInventories = !window.location.pathname.includes("/warehouses");
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 767);
 
@@ -136,22 +131,12 @@ function InventoryList({
             <div className="inventory-table__actions ">
               <img
                 src={deleteIcon}
-                alt="Delete"
+                alt="Delete Icon"
                 className="inventory-table__icon"
                 onClick={() => openModal(inventory)}
               />
-              <img
-                src={editIcon}
-                alt="Edit"
-                className="inventory-table__icon"
-                onClick={() => {
-                  handleInventoryEditOnClick(inventory.id);
-                }}
-              />
               <Link
-                to={{
-                  pathname: `/inventories/${inventory.id}/edit`, // Dynamically build the edit page URL
-                }}
+                to={`/inventories/${inventory.id}/edit`}
                 state={{
                   inventoryId: inventory.id,
                   ...inventory, // Pass the entire inventory object
@@ -159,11 +144,8 @@ function InventoryList({
               >
                 <img
                   src={editIcon}
-                  alt="Edit"
+                  alt="Edit Icon"
                   className="warehouse-table__icon"
-                  onClick={() => {
-                    handleInventoryEditOnClick(inventoryItem);
-                  }}
                 />
               </Link>
             </div>

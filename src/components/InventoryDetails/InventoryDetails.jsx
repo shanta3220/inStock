@@ -1,6 +1,3 @@
-import React from "react";
-import { useNavigate, NavLink } from "react-router-dom";
-import arrow from "../../assets/Icons/arrow_back-24px.svg";
 import "./InventoryDetails.scss";
 
 function InventoryDetails({ inventory, warehouse }) {
