@@ -4,7 +4,6 @@ import axios from "axios";
 import "./InventoryDetailsPage.scss";
 import Card from "../../components/Card/Card";
 import InventoryDetails from "../../components/InventoryDetails/InventoryDetails";
-import InventoryList from "../../components/InventoryList/InventoryList";
 
 function InventoryDetailsPage() {
   const { id } = useParams();

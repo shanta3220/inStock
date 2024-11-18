@@ -1,7 +1,6 @@
 import "./InventoryDetails.scss";
 
 function InventoryDetails({ inventory }) {
-  console.log(inventory);
   let statusColor = "";
   if (inventory.status === "Out of Stock") {
     statusColor = "inventory-info__status-red";
