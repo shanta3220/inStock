@@ -14,6 +14,9 @@ function InventoryList({ inventories, setInventories }) {
   const showAllInventories = !window.location.pathname.includes("/warehouses");
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 767);
 
+  const isWarehouseInventories =
+    window.location.pathname.includes("/warehouses");
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 767);
@@ -41,7 +44,11 @@ function InventoryList({ inventories, setInventories }) {
   };
   return (
     <div className="inventory-table inventories-table">
-      <div className="inventory-table__header inventoriesPage__header">
+      <div
+        className={`inventory-table__header ${
+          isWarehouseInventories ? "inventory-table__header--detail" : ""
+        }`}
+      >
         <HeaderCell
           label="INVENTORY ITEM"
           sortable
@@ -76,7 +83,9 @@ function InventoryList({ inventories, setInventories }) {
       {inventories.length > 0 ? (
         inventories.map((inventory, index) => (
           <div
-            className="inventory-table__row inventoriesPage__row"
+            className={`inventory-table__row ${
+              isWarehouseInventories ? "inventory-table__row--detail" : ""
+            }`}
             key={index}
           >
             <div className="inventory-table__cell-pair">

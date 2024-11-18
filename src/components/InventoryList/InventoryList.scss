@@ -15,15 +15,24 @@
 
     @include tablet {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1rf 0.5fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 0.5fr 0.5fr;
       background-color: $background-color-2;
       width: 100%;
       padding: 0.5rem 2rem;
     }
 
     @include desktop {
-      grid-template-columns: 1fr 1.5fr 1fr 1fr 0.5fr;
+      grid-template-columns: 1fr 1.5fr 1fr 1fr 0.5fr 0.5fr;
       padding: 0.5rem 2.5rem;
+    }
+
+    &--detail {
+      @include tablet {
+        grid-template-columns: 1fr 1fr 1fr 1fr 0.5fr;
+      }
+      @include desktop {
+        grid-template-columns: 1fr 1.5fr 1fr 1fr 0.5fr;
+      }
     }
   }
 
@@ -36,7 +45,7 @@
 
     @include tablet {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr 0.5fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 0.5fr 0.5fr;
       font-weight: bold;
       border-bottom: 0.0625rem solid $secondary-color-2;
       border-top: 0;
@@ -50,7 +59,16 @@
 
     @include desktop {
       padding: 0 2.5rem 1.25rem;
-      grid-template-columns: 1fr 1.5fr 1fr 1fr 0.5fr;
+      grid-template-columns: 1fr 1.5fr 1fr 1fr 0.5fr 0.5fr;
+    }
+
+    &--detail {
+      @include tablet {
+        grid-template-columns: 1fr 1fr 1fr 1fr 0.5fr;
+      }
+      @include desktop {
+        grid-template-columns: 1fr 1.5fr 1fr 1fr 0.5fr;
+      }
     }
   }
 
