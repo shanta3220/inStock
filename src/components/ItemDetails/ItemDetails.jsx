@@ -40,7 +40,6 @@ const ItemDetails = ({ formState, onChange, submitted }) => {
   return (
     <div className="item-details">
       <h2 className="item-details__header">Item Details</h2>
-
       <label htmlFor="item_name" className="item-details__label">
         Item Name
       </label>
