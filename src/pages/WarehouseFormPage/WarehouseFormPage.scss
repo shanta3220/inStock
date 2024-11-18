@@ -9,7 +9,6 @@
 
   @include tablet {
     border-top: 0.0625rem solid $secondary-color-2;
-    margin-top: -1rem;
     align-items: flex-end;
   }
 
@@ -129,6 +128,8 @@
     justify-content: space-between;
     gap: 1.0625rem;
     width: 100%;
+    border-bottom-right-radius: .25rem;
+    border-bottom-left-radius: .25rem;
 
     @include tablet {
       gap: 1rem;

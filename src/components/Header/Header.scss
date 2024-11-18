@@ -5,7 +5,7 @@
 
 .header {
   display: flex;
-
+  position: relative;
   &-wrapper {
     flex-direction: column;
     background-color: $background-color-1;
