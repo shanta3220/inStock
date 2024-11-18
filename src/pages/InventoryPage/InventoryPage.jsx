@@ -7,10 +7,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import InventoryDetailsPage from "../InventoryDetailsPage/InventoryDetailsPage";
 import EditInventoryPage from "../EditInventoryPage/EditInventoryPage";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function InventoryPage() {
-  const navigate = useNavigate();
   const [inventories, setInventories] = useState([]);
 
   const handleAddNewInventoryClick = () => {
@@ -61,11 +60,6 @@ function InventoryPage() {
           inventories={inventories}
           setInventories={setInventories}
         />
-
-        <div>
-          Inventory Page
-          <EditInventoryPage />
-        </div>
       </Card>
     </>
   );

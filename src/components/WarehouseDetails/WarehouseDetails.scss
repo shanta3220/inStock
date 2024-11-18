@@ -20,6 +20,10 @@
     border-bottom: 0;
   }
 
+  @include desktop {
+    padding: 1.25rem 2.5rem;
+  }
+
   &__cell-pair {
     display: flex;
     align-items: start;
@@ -41,7 +45,7 @@
       }
 
       @include desktop {
-        width: 68%;
+        width: 59%;
         padding-bottom: 0;
       }
     }
