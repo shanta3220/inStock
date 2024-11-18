@@ -1,0 +1,141 @@
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
+
+.item-availability {
+  border-top: 0.0625rem solid $secondary-color-2;
+  padding: 2rem 2.5rem 0 2.5rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @include tablet {
+    margin-top: 0;
+    padding-left: 1.5rem;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  &__title {
+    @include h2-font-mob;
+    padding-bottom: 1rem;
+
+    @include tablet {
+      @include h2-font-tab;
+    }
+  }
+
+  &__section {
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  &__label {
+    @include h3-font-mob;
+    padding-bottom: 0.25rem;
+
+    @include tablet {
+      @include h3-font-tab;
+    }
+  }
+
+  &__status-options {
+    display: flex;
+    gap: 50%;
+
+    @include tablet {
+      gap: 18%;
+    }
+  }
+
+  &__radio {
+    display: flex;
+    align-items: center;
+
+    input {
+      margin-left: 0;
+      margin-right: 0.25rem;
+      margin-top: 0;
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  &__radio-text {
+    color: $secondary-color-1;
+    @include h3-font-mob;
+    font-weight: 400;
+
+    &--in-stock {
+      color: $primary-color-1;
+    }
+
+    &--out-of-stock {
+      color: $primary-color-1;
+    }
+  }
+
+  &__select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: url("../../assets/Icons/arrow_drop_down-24px.svg") no-repeat
+      right 0.625rem center;
+    background-size: 1.5rem;
+    padding: 0.5rem 1.875rem 0.5rem 1rem;
+    width: 100%;
+    border: 0.0625rem solid #ccc;
+    border-radius: 1.25rem;
+    margin-top: 0.25rem;
+    font-family: "Titillium";
+    height: 2.25rem;
+
+    @include tablet {
+      height: 2.375rem;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 0.3125rem rgba(0, 123, 255, 0.5);
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__quantity-input {
+    height: 2.25rem;
+    padding: 0 1rem;
+    border-radius: 1.25rem;
+    border: 0.0625rem $secondary-color-2 solid;
+    width: 30%;
+
+    &:focus {
+      border: 0.0625rem solid $primary-color-2;
+      outline: none;
+    }
+
+    @include tablet {
+      height: 2.375rem;
+    }
+  }
+
+  &__input-error {
+    border: 0.0625rem solid $supporting-color-2;
+    transition: border-color 0.3s, background-color 0.3s;
+  }
+  &__error-message {
+    display: flex;
+    align-items: center;
+  }
+
+  &__error-img {
+    height: 1rem;
+  }
+
+  &__error-text {
+    @include h4-font-mob;
+    padding-left: 0.25rem;
+  }
+}

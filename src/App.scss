@@ -1,0 +1,19 @@
+@use "./styles/partials/mixins.scss" as *;
+@use "./styles/partials/variables.scss" as *;
+@use "./styles/partials/typography.scss" as *;
+@use "./styles/partials/global.scss" as *;
+
+*,
+*::before,
+*::after {
+  @include box-sizing;
+}
+
+html,
+body {
+  margin: 0;
+  font-family: "Titillium";
+  font-weight: 400;
+  color: $primary-color-1;
+  background-color: $background-color-2;
+}
