@@ -60,11 +60,6 @@ function InventoryPage() {
           inventories={inventories}
           setInventories={setInventories}
         />
-
-        <div>
-          Inventory Page
-          <EditInventoryPage />
-        </div>
       </Card>
     </>
   );

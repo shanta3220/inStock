@@ -6,7 +6,7 @@ import editIcon from "../../assets/Icons/edit-white-24px.svg";
 function Card({
   title,
   returnPath,
-  handleWarehouseEditOnClick,
+  handleEditOnClick,
   headerContent,
   children,
 }) {
@@ -26,19 +26,19 @@ function Card({
             />
           )}
           <h1 className="card__name">{title}</h1>
-          {handleWarehouseEditOnClick && (
+          {handleEditOnClick && (
             <button
               className="card__edit-button card__edit-button--mob"
-              onClick={handleWarehouseEditOnClick}
+              onClick={handleEditOnClick}
             ></button>
           )}
         </div>
         <div className="card__header-section">
           {headerContent}
-          {handleWarehouseEditOnClick && (
+          {handleEditOnClick && (
             <button
               className="card__edit-button card__edit-button--tablet"
-              onClick={handleWarehouseEditOnClick}
+              onClick={handleEditOnClick}
             ></button>
           )}
         </div>

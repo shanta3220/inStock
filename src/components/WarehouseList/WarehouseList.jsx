@@ -48,7 +48,7 @@ function WarehouseList({ warehouses, setWarehouses }) {
           sortable
           onSort={() => handleSort("contact_information")}
         />
-        <HeaderCell label="Actions" align="right" />
+        <HeaderCell label="ACTIONS" align="right" />
       </div>
 
       {/* Data rows */}
