@@ -1,6 +1,6 @@
 import "./InventoryDetails.scss";
 
-function InventoryDetails({ inventory, warehouse }) {
+function InventoryDetails({ inventory }) {
   let statusColor = "";
   if (inventory.status === "Out of Stock") {
     statusColor = "inventory-info__status-red";
@@ -39,7 +39,7 @@ function InventoryDetails({ inventory, warehouse }) {
           </div>
           <div className="inventory-info__warehouse">
             <h2 className="inventory-info__heading">Warehouse: </h2>
-            <p className="inventory-info__text">{warehouse.warehouse_name}</p>
+            <p className="inventory-info__text">{inventory.warehouse_name}</p>
           </div>
         </div>
       </div>
