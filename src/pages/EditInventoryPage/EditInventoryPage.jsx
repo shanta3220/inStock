@@ -79,7 +79,7 @@ function EditInventoryPage() {
         `${API_URL}/api/inventories/${id}`,
         updatedInventory
       );
-      navigate("/inventory"); // Navigate to inventory after successful update
+      navigate("/inventories"); // Navigate to inventory after successful update
     } catch (error) {
       console.error("Error updating inventory item:", error);
     }
