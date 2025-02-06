@@ -5,7 +5,7 @@ import searchIcon from "../../assets/Icons/search-24px.svg";
 import InventoryList from "../../components/InventoryList/InventoryList";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function InventoryPage() {
   const [inventories, setInventories] = useState([]);

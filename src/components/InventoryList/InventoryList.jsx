@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import DeleteInventoryModal from "../DeleteInventoryModal/DeleteInventoryModal";
 import Modal from "react-modal";
+import LoadingTextAfterDelay from "../LoadingTextAfterDelay/LoadingTextAfterDelay";
 
 Modal.setAppElement("#root");
 
@@ -161,10 +162,7 @@ function InventoryList({ inventories, setInventories }) {
           </div>
         ))
       ) : (
-        <p>
-          Loading inventories... The server might be idle. Please wait a moment
-          or refresh the page in 1 minute.
-        </p>
+        <LoadingTextAfterDelay list={inventories} />
       )}
       {selectedInventory && (
         <DeleteInventoryModal

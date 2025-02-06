@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import DeleteWarehouseModal from "../DeleteWarehouseModal/DeleteWarehouseModal";
 import { useState } from "react";
+import LoadingTextAfterDelay from "../LoadingTextAfterDelay/LoadingTextAfterDelay";
 
 Modal.setAppElement("#root");
 
@@ -114,10 +115,7 @@ function WarehouseList({ warehouses, setWarehouses }) {
           </div>
         ))
       ) : (
-        <div>
-          Loading warehouses... The server might be idle. Please wait a moment
-          or refresh the page in 1 minute.
-        </div>
+        <LoadingTextAfterDelay list={warehouses} />
       )}
       {selectedWarehouse && (
         <DeleteWarehouseModal
