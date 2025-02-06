@@ -161,7 +161,10 @@ function InventoryList({ inventories, setInventories }) {
           </div>
         ))
       ) : (
-        <div>No inventories available</div>
+        <p>
+          Loading inventories... The server might be idle. Please wait a moment
+          or refresh the page in 1 minute.
+        </p>
       )}
       {selectedInventory && (
         <DeleteInventoryModal

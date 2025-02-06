@@ -114,7 +114,10 @@ function WarehouseList({ warehouses, setWarehouses }) {
           </div>
         ))
       ) : (
-        <div>No warehouses available</div>
+        <div>
+          Loading warehouses... The server might be idle. Please wait a moment
+          or refresh the page in 1 minute.
+        </div>
       )}
       {selectedWarehouse && (
         <DeleteWarehouseModal
